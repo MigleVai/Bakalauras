@@ -64,7 +64,7 @@ nuo medicinos iki savivaldžių automobilių.
 Konvoliuciniai neuroniniai tinklai gali būti naudojami:
 \begin{itemize}
     \item Veido atpažinimui - identifikuoti arba verifikuoti asmenį. Pavyzdžiui, „DeepFace“ sistema sukurta „Facebook“ \cite{Taigman:2014:DCG:2679600.2680208}, kuri atpažįsta žmonių veidus nuotraukose, 
-arba „Face ID“ sistema sukurta Apple, kuri yra skirta identifikuoti asmenį, kuris bando atrakinti telefoną. 
+arba „Face ID“ sistema sukurta „Apple“, kuri yra skirta identifikuoti asmenį, kuris bando atrakinti telefoną. 
     \item Medicinoje - širdies, plaučių, prostatos, krūties vėžių \cite{cancer}, akių ligų diagnozavimui \cite{eyedis}.
     \item Žmonių elgesio analizė realiu laiku – „DeepGlint“ nustato žmones nuotraukose ir nuspėja jų elgesį \cite{deepGlint}.
     \item Vertimas – „Google Translate“ gali versti tekstą iš paveiksliukų realiu laiku \cite{Raschka:2015:PML:2886323}.
@@ -112,7 +112,7 @@ Vienam neuronui yra pateikiama visų prieš jį buvusių neuronų informacija ir
 jo svoriu ir visi šie duomenys yra sudedami tarpusavyje bei pridedama slenksčio reikšmė (angl. bias). Taip iš vektoriaus gaunamas vienas rezultatas ir jei šis rezultatas tinka aktyvavimo
 funkcijai, jis yra perduodamas tolimesniems neuronams \cite{shiffman2012nature}. Tokio tipo veikimo projektavimas yra vadinamas tiesioginio sklidimo (angl. feedforward) tinklu.
 
-Tačiau jungčių svoriai nėra pastovūs. Kai dirbtinis neuroninis tinklas mokosi, galutinis rezultatas yra lyginamas su tikėtinu teisingu rezultatu (daugiau informacijos "Nuostolio funkcija"), jei šie
+Tačiau jungčių svoriai nėra pastovūs. Kai dirbtinis neuroninis tinklas mokosi, galutinis rezultatas yra lyginamas su tikėtinu teisingu rezultatu (daugiau informacijos „Nuostolio funkcija“), jei šie
 rezultatai skiriasi, slenksčio reikšmės ir svoriai yra keičiami atitinkamai \cite{backpropogation}, tai vadinama sklidimo atgal algoritmu (angl. backpropagation).
 Mokymo metu duomenys neuroniniu tinklu keliauja į priekį - nuo įvesties į išvesties sluoksnį. Kai išvesties sluoksnis yra pasiekiamas, gautas rezultatas yra palyginamas su norimu rezultatu bei 
 apskaičiuojama nuostolio funkcija - kaip stipriai skiriasi gautas ir norimas rezultatai. Pagal šią reikšmę matoma, kaip reiktų keisti gautą rezultatą, kad nuostolio funkcijos reikšmė pasiektų lokalų 
@@ -149,8 +149,8 @@ Kelios aktyvavimo funkcijos:
 Mokantis dirbtiniam neuroniniam tinklui jo gaunami rezultatai gali labai skirtis nuo tikėtinų rezultatų, todėl nuostolio funkcija apskaičiuoja kaip stipriai
 skiriasi gautas rezultatas nuo tikėtino. Kuo didesnis nuostolis tuo toliau nuo teisingo atsakymo yra dirbtinis neuroninis tinklas \cite{Cameron-loss-fun}.
 Paprasčiausia ir dažniausiai naudojama nuostolio funkcija yra vidutinio kvadratinio nuokrypio (angl. mean squared error). Ši funkcija apskaičiuoja kvadratinį skirtumą tarp tikėtino 
-ir gauto rezultatų. Tačiau šios funkcijos vienas iš didesnių trūkumų - neproporcingas išskyrimas didelių rezultatų. Kadangi funkcija didėja kvadratiniai,
-o ne tiesiniai, kai gaunamas rezultatas tolsta nuo tikėtino rezultato.
+ir gauto rezultatų. Tačiau šios funkcijos vienas iš didesnių trūkumų - neproporcingas išskyrimas didelių rezultatų. Kadangi funkcija didėja kvadratiškai,
+o ne tiesiškai, tai gaunamas rezultatas tolsta nuo tikėtino rezultato.
 
 Priklausomai nuo to kokią problemą yra bandoma išspręsti yra naudojamos skirtingos funkcijos. Viena iš problemų yra klasifikacijos - dažniausiai išvesties
 rezultatas yra tikimybės vertė f(x). Bendrai, funkcijos reikšmės dydis parodo gauto rezultato tikslumą.
@@ -166,19 +166,19 @@ Kelios klasifikacijos nuostolio funkcijos:
 \subsection{Optimizavimo funkcijos}
 Optimizavimo funkcijos naudojamos vidinių tinklo parametrų atnaujinimui, kad sumažinti gaunamų rezultatų netikslumą \cite{Niknafs2016NeuralNO}. 
 Visos optimizavimo funkcijos gali būti suskirstytos į du tipus - nuolatinio mokymosi greičio ir prisitaikančio mokymosi. 
-Lentelėje 1 išvardinti visos populiariausios optimizavimo funkcijos.
+Lentelė 1 buvo parengta remiantis \cite{DBLP:journals/corr/Ruder16} straipsniu. Lentelėje išvardintos visos populiariausios optimizavimo funkcijos.
 
 \begin{longtable}[h!]{ | p{2cm} | p{2.2cm} | p{2.5cm} | p{2.5cm} | p{4.5cm} | } 
 \caption{Optimizavimo funkcijos} \\ \hline
 Pavadinimas & Tipas & Privalumai & Trūkumai & Veikimas \\ \hline
 \endhead
 SGD & Nuolatinio mokymosi greičio & Parametrų atnaujinimai turi aukštą dispersiją, kas leidžia lengviau rasti lokalų minimumą. & Didelis svyravimas trukdo konverguoti. & Parametrų atnaujinimas vykdomas kiekvienai mokymo iteracijai. \\ \hline
-Adam & Prisitaikančio mokymosi & Greitai konverguoja ir modelio mokymosi greitis yra didelis bei efektyvus. & Praleidžia mažą lokalų minimumą. & Suskaičiuoja mokymosi greitį kiekvienam parametrui bei saugo eksponentiškai nykstantį prieš tai buvusį kvadratinio gradiento vidurkį ir eksponentiškai mažėjantį prieš tai buvusį gradiento vidurkį, panašų į momentą. \\ \hline
+Adam & Prisitaikančio mokymosi & Greitai konverguoja ir modelio mokymosi greitis yra didelis bei efektyvus. & Praleidžia mažą lokalų minimumą. & Suskaičiuoja mokymosi greitį kiekvienam parametrui bei saugo eksponentiškai nykstantį prieš tai buvusį kvadratinio gradiento vidurkį ir eksponentiškai mažėjantį prieš tai buvusį gradiento vidurkį, panašų į pagreitį. \\ \hline
 Adagrad & Prisitaikančio mokymosi & Nereikia rankiniu būdu derinti mokymosi greičio. & Mokymosi greitis visada yra mažėjantis ir nykstantis, kas lėtina konvergavimą. & Leidžia mokymosi greičiui priklausyti nuo parametrų. Dideli atnaujinimai nedažniems parametrams, maži atnaujinimai dažniems parametrams. \\ \hline
-RMSprop & Prisitaikančio mokymosi & Greitai konverguoja. & Momentas nedidina funkcijos efektyvumo. & Dalija mokymosi greitį iš eksponentiškai nykstančio kvadratinio gradiento vidurkio. \\ \hline
+RMSprop & Prisitaikančio mokymosi & Greitai konverguoja. & Pagreitis nedidina funkcijos efektyvumo. & Dalija mokymosi greitį iš eksponentiškai nykstančio kvadratinio gradiento vidurkio. \\ \hline
 \end{longtable}
 
-Skyriuje "Dirbtinio neuroninio tinklo veikimas" minėta, kad sklidimo atgal algoritmas pagal gauto ir norimo 
+Skyriuje „Dirbtinio neuroninio tinklo veikimas“ minėta, kad sklidimo atgal algoritmas pagal gauto ir norimo 
 rezultatų skirtumą keičia vidinius neuroninio tinklo parametrus. Vidinių parametrų atnaujinimui yra naudojama 
 optimizavimo funkcija, kuri apskaičiuoja gradientą. Svoriai yra keičiami pagal priešingą apskaičiuoto gradiento 
 kryptį - bandoma leistis į gradiento minimumą.
@@ -192,12 +192,12 @@ kad žemiausia vieta bus peršokta ir bus tolstama nuo jos.
 
 \subsection{Hiperparametrai}
 
-Mašininame mokymesi terminas hiperparametras (angl. hyperparameter) yra naudojamas atskirti parametrus, kurie nėra išmokstami iš duomenų, kurie yra naudojami mokant modelį. Hiperparametrai apima kintamuosius skirtus reguliuoti neuroninį tinklą. Jie turi labai didelį poveikį neuroninio tinklo tikslumui, tačiau pasirinkti jų vertes gali būti sudėtinga, nes įtaką daro architektūra, duomenų rinkinys. Optimalių hiperparametrų radimui yra sugalvota daug metodų, kurie yra aprašyti ,,Paieškos strategija'' skyriuje. 
+Mašininame mokymesi terminas hiperparametras (angl. hyperparameter) yra naudojamas atskirti parametrus, kurie nėra išmokstami iš duomenų, kurie yra naudojami mokant modelį. Hiperparametrai apima kintamuosius skirtus reguliuoti neuroninį tinklą. Jie turi labai didelį poveikį neuroninio tinklo tikslumui, tačiau pasirinkti jų vertes gali būti sudėtinga, nes įtaką daro architektūra, duomenų rinkinys. Optimalių hiperparametrų radimui yra sugalvota daug metodų, kurie yra aprašyti „Paieškos strategija“ skyriuje. 
 Dalis hiperparametrų yra: mokymosi greitis, epochų ir partijų (angl. batch) vertės, vidinių sluoksnių kiekis, išmetimo sluoksnio reikšmė, aktyvacijos, optimizacijos ir nuostolio funkcijos. 
 
 \section{Konvoliucinis neuroninis tinklas}
-Konvoliuciniai neuroniniai tinklai yra labai panašūs į paprastus dirbtinius neuroninius tinklus (daugiau informacijos skyriuje "Dirbtinis neuroninis
-tinklas"). Tačiau pagrindinis skirtumas tarp šių tinklų yra, kad konvoliucinio neuroninio tinklo įvesties sluoksnis priima duomenis, kurie gali būti konvertuojami į 2D matricą, pavyzdžiui, paveiksliukai, 
+Konvoliuciniai neuroniniai tinklai yra labai panašūs į paprastus dirbtinius neuroninius tinklus (daugiau informacijos skyriuje „Dirbtinis neuroninis
+tinklas“). Tačiau pagrindinis skirtumas tarp šių tinklų yra, kad konvoliucinio neuroninio tinklo įvesties sluoksnis priima duomenis, kurie gali būti konvertuojami į 2D matricą, pavyzdžiui, paveiksliukai, 
 kurie jei padaryti su standartine skaitmenine kamera, turi tris komponentus - raudoną, žalią ir mėlyną. Šiuos komponentus galima 
 įsivaizduoti kaip tris 2D matricas sudėtas viena ant kitos. Kiekvienos matricos i-osios eilutės ir j-ojo stulpelio elementas 
 atitinka nuotraukos pikselį, kurio reikšmė yra intervale nuo 0 iki 255. Kadangi naudojamos informacijos tipas yra specifinis, 
@@ -208,7 +208,7 @@ Objektų atpažinimas paveiksliukuose yra sudėtingas dėl šių iššūkių:
 \item Segmentavimas - paveiksliukai gali atvaizduoti įvairias scenas, kuriose gali būti pavaizduota daug objektų, kurie vienas kita gali dalinai uždengti.
 \item Šviesa - pikselių intensyvumas gali būti paveiktas šviesos šaltinio ar pačio objekto.
 \item Deformacija - objektai gali būti deformuoti įvairiais būdais, pavyzdžiui, kiekvieno žmogaus ranka parašyti skaičiai skiriasi.
-\item Galimybės - objektų klasės dažnai nustatomos pagal tai kaip patys objektai yra naudojami, pavyzdžiui, kėdės yra objektai sukurti sėdėti, tačiau jos gali turėti įvairų dizainą.
+\item Galimybės - objektų klasės dažnai nustatomos pagal tai kaip patys objektai yra naudojami, pavyzdžiui, kėdės yra objektai sukurti sėdėti, tačiau jos gali turėti skirtingus dizainus.
 \item Žvilgsnio taškas - keičiant vietą iš kurios yra žiūrima gali keistis objekto forma, informacija šokinėja per įvesties sluoksnio dimensiją (t.y. pikselius). 
 \end{itemize}
 
@@ -223,7 +223,7 @@ Konvoliucija yra matematinė operacija, kuri apibūdina taisyklę, kuri parodo k
 
 Pagal paveiksliuką (1 pav.) matyti, kad įvesties duomenys ir filtras, kuris yra sudarytas iš svorių, yra pateikti 2D matrica. Filtras juda nuo duomenų matricos kairės viršutinės dalies į dešinę, 
 tada yra nuleidžiamas žemiau per vieną eilutę ir taip filtras juda per visą duomenų matricą, kol su visais jos duomenimis filtras yra sudauginamas ir užpildo naują matricą, kuri 
-yra vadinama ypatybių planu (angl. feature map).
+yra vadinama požymių planu (angl. feature map).
 Tačiau konvoliuciniai tinklai turi daug filtrų, kurie pereina per vieną paveiksliuką, kiekvienas išskirdamas skirtingą paveiksliuko ypatybę \cite{DBLP:journals/corr/abs-1708-08711}.
 Pirmuose sluoksniuose šiuos filtrus galima apibūdinti kaip horizontalių, vertikalių ar įstrižų linijų filtrus, kurie sukuria paveikslėlio 
 kraštų planą.
@@ -321,21 +321,21 @@ apie įvairias architektūras.
 Pavadinimas & Metai & Parametrų kiekis & Veikimas & ILSVRC vieta \\
 \hline
 \endhead
-LeNet & 1998 & 60 000 & Geriausiai atpažįsta ranka parašytus skaičius. Susideda iš sluoksnių - kelių pasikartojančių konvoliucijos ir sujungimo bei pasibaigia dviem pilno sujungimo sluoksniais. & - \\
+LeNet & 1998 & 60 000 & Geriausiai atpažįsta ranka parašytus skaičius. Susideda iš sluoksnių - kelių pasikartojančių konvoliucijos ir sujungimo bei pasibaigia dviem pilno sujungimo sluoksniais \cite{lecun1995comparison}. & - \\
 \hline
-AlexNet & 2012 & 60 000 000 & Veikimu panašus į LeNet, tačiau turi daug daugiau parametrų ir filtrų bei sudėtus konvoliucinius sluoksnius.  & pirma \\
+AlexNet & 2012 & 60 000 000 & Veikimu panašus į LeNet, tačiau turi daug daugiau parametrų ir filtrų bei sudėtus konvoliucinius sluoksnius \cite{DBLP:journals/corr/abs-1803-01164}.  & pirma \\
 \hline
-GoogLeNet & 2014 & 23 800 000 & Vidiniai sluoksniai sudėti paraleliai, naudojami "Inception" moduliai. Vienas modulis savyje turi 1x1, 3x3 ir 5x5 dydžių konvoliucijos filtrų bei vidurkio sudėjimo sluoksnius. & pirma \\
+GoogLeNet & 2014 & 23 800 000 & Vidiniai sluoksniai sudėti paraleliai, naudojami „Inception“ moduliai. Vienas modulis savyje turi 1x1, 3x3 ir 5x5 dydžių konvoliucijos filtrų bei vidurkio sudėjimo sluoksnius \cite{DBLP:journals/corr/SzegedyLJSRAEVR14}. & pirma \\
 \hline
-VGGNet & 2014 & 138 000 000 & Panašus veikimas į AlexNet, tačiau daug gilesnis. Naudojamų filtrų dydis yra 3x3 ir jie yra sudėti vienas po kito. & antra \\
+VGGNet & 2014 & 138 000 000 & Panašus veikimas į AlexNet, tačiau daug gilesnis. Naudojamų filtrų dydis yra 3x3 ir jie yra sudėti vienas po kito \cite{Simonyan2015VeryDC}. & antra \\
 \hline
-ResNet & 2015 & 25 000 000 & Turi labai daug sluoksnių, sudėtų vienas po kito, kurie turi liekamąjį (angl. residual) bloką, kuris įvesties informaciją perduoda tolimesniam sluoksniui ją pridėdamas ir taip sumažina konvoliucijos ir aktyvavimo funkcijų kiekį.  & pirma \\
+ResNet & 2015 & 25 000 000 & Turi labai daug sluoksnių, sudėtų vienas po kito, kurie turi liekamąjį (angl. residual) bloką, kuris įvesties informaciją perduoda tolimesniam sluoksniui ją pridėdamas ir taip sumažina konvoliucijos ir aktyvavimo funkcijų kiekį \cite{DBLP:journals/corr/TargAL16}.  & pirma \\
 \hline
-CUImage & 2016 & - & Dvipusis dvikryptis tinklas, kuris perduoda žinutes tarp skirtingų paramos regionų. & pirma \\
+CUImage & 2016 & - & Dvipusis dvikryptis tinklas, kuris perduoda žinutes tarp skirtingų paramos regionų \cite{Peng2018CUImageAN}. & pirma \\
 \hline
-SENets & 2017 & 145 800 000 & Panašus veikimas į ResNet, pridėtas SE blokas, kuris sujungia ypatybių planus ir valdo išėjimus iš kanalo.  & pirma \\
+SENet & 2017 & 145 800 000 & Panašus veikimas į ResNet, pridėtas SE blokas, kuris sujungia ypatybių planus ir valdo išėjimus iš kanalo \cite{DBLP:journals/corr/abs-1709-01507}.  & pirma \\
 \hline
-NASNet & 2017 & 88 900 000 & Google naudodami AutoML ir NAS algoritmą rado geriausią architektūra ImageNet duomenų bazei. NASNet yra sudaryta iš dviejų tipų celių - normalių ir mažinimo. & - \\ 
+NASNet & 2017 & 88 900 000 & Google naudodami AutoML ir NAS algoritmą rado geriausią architektūra ImageNet duomenų bazei. NASNet yra sudaryta iš dviejų tipų celių - normalių ir mažinimo \cite{DBLP:journals/corr/ZophVSL17}. & - \\ 
 \hline
 \end{longtable}
 
@@ -358,13 +358,15 @@ Klaidų matricoje yra naudojamos šios sąvokos:
     \item NN (netikri neigiami) - spėjimas yra neigiamas, tačiau jis yra neteisingas.
 \end{itemize}
 
-Šios sąvokos yra savo sutrumpinimais pavaizduotos 1 pav. Taigi, jeigu modelis įvardina dalį klasės 1 paveiksliukų kaip klasę 1 tai tų paveiksliukų kiekis yra įrašomas į TT matricos laukelį. Tačiau jei modelis klasės 1 paveiksliukus įvardina kaip klasę 2, tai tas paveiksliukų skaičius yra įrašomas į NT laukelį. Tas pats vyksta su klasės 2 paveiksliukais, jeigu jie yra įvardinami kaip klasės 2 paveiksliukai, tas kiekis įrašomas į TN laukelį, tačiau jei kažkiek paveiksliukų įvardinama kaip klasės 1, tas skaičius įrašomas į NN laukelį. 
+Šios sąvokos yra savo sutrumpinimais pavaizduotos 1 pav. 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{img/KlaiduMatrica.png}
+    \includegraphics[width=0.6\textwidth]{img/KlaiduMatrica.png}
     \caption{Klaidų matricos pavyzdys}
     \label{fig:architecture}
 \end{figure}
+Taigi, jeigu modelis įvardina dalį klasės 1 paveiksliukų kaip klasę 1 tai tų paveiksliukų kiekis yra įrašomas į TT matricos laukelį. Tačiau jei modelis klasės 1 paveiksliukus įvardina kaip klasę 2, tai tas paveiksliukų skaičius yra įrašomas į NT laukelį. Tas pats vyksta su klasės 2 paveiksliukais, jeigu jie yra įvardinami kaip klasės 2 paveiksliukai, tas kiekis įrašomas į TN laukelį, tačiau jei kažkiek paveiksliukų įvardinama kaip klasės 1, tas skaičius įrašomas į NN laukelį. 
+
 Pagal klaidų matricos duomenis galima apskaičiuoti kelias modelio metrikas - tikslumas, atšaukimas ir precizija.
 
 \subsubsection{Tikslumas}
@@ -403,13 +405,13 @@ kuri butų skirta vizualinio objekto atpažinimo programinės įrangos tyrimams.
 yra grupuojami į sinonimų rinkinius, kurie turi apibūdinimus ir naudojimo pavyzdžius bei saugo ryšių kiekį tarp sinonimų arba jų narių. ImageNet turi daugiau nei 
 100 000 sinonimų rinkinių, kur didžioji dalis yra daiktavardžiai (80 000+). 
 
-ImageNet projektas kiekvienais metais daro konkursą vadinamą "ImageNet Large Scale Visual Recognition Challenge" (trumpinys ILSVRC). Konkurso užduotis yra 
+ImageNet projektas kiekvienais metais daro konkursą vadinamą „ImageNet Large Scale Visual Recognition Challenge“ (trumpinys ILSVRC). Konkurso užduotis yra 
 išmokinti modelį, kuris galėtų įvesties paveiksliuką teisingai klasifikuoti į 1000 skirtingų objektų klasių, kurios atitinka realius daiktus, gyvūnus ir t.t. Modeliai 
 yra apmokomi su apie 1.2 milijonų paveiksliukų ir dar 50 000 paveiksliukų yra naudojami validacijai mokymo metu bei 100 000 paveiksliukų yra panaudojami galutiniam 
 modelio testavimui. Šis konkursas yra paveiksliukų klasifikacijos algoritmų etalonas.
 
 \subsection{Keras}
-Keras yra aukšto lygio programų sąsaja skirta neuroniniams tinklams. Sąsaja parašyta su Python programavimo kalba ir vidinėje pusėje galinti veikti su "TensorFlow" 
+Keras yra aukšto lygio programų sąsaja skirta neuroniniams tinklams. Sąsaja parašyta su Python programavimo kalba ir vidinėje pusėje galinti veikti su „TensorFlow“ 
 ir kitomis bibliotekomis. Keras buvo sukurtas tikintis suteikti greitą eksperimentavimą, kad sugalvojus idėją pasiekti rezultato būtų galima su kiek įmanoma mažiau uždelsimo.
 
 Ši sąsaja savyje turi visus pagrindinius neuroninio tinklo kūrimo blokus, pavyzdžiui, sluoksniai, aktyvavimo ir optimizavimo funkcijos. Taip pat Keras suteikia modelius, 
@@ -417,18 +419,18 @@ kurie yra apmokyti naudojant ImageNet duomenų bazę. Šiuos modelius galima der
 
 \subsection{TensorFlow}
 TensorFlow yra atviros programinės įrangos biblioteka skirta aukšto našumo skaitiniams skaičiavimams. Jo lanksti architektūra leidžia lengvai diegti skaičiavimus įvairiose 
-platformose - procesoriuose, grafikos procesoriuose. Sukurtas "Google" dirbtinio intelekto skyriaus, tad yra labai palaikomas automatinis ir gilusis mokymasis, tačiau 
+platformose - procesoriuose, grafikos procesoriuose. Sukurtas „Google“ dirbtinio intelekto skyriaus, tad yra labai palaikomas automatinis ir gilusis mokymasis, tačiau 
 dėl bibliotekos ir skaičiavimų lankstumo yra naudojamas įvairiose mokslinėse srityse.
 
 \section{Modelių derinimas su mažu duomenų rinkiniu} 
 Šio eksperimento tikslas yra išanalizuoti skirtingų gylių neuroninius tinklus pagal metrikas gautas po mokymo ir validavimo naudojant mažą duomenų rinkinį. 
-Poskyriuje "Architektūros" yra trumpai apibūdinti pagrindiniai konvoliucinių neuroninių tinklų tipai. 
+Poskyriuje „Architektūros“ yra trumpai apibūdinti pagrindiniai konvoliucinių neuroninių tinklų tipai. 
 Iš jų buvo išsirinktas NASNet, kadangi jis yra inovatoriškiausias ir geriausią tikslumą turintis. Negilusis modelis buvo NASNetMobile, o gilusis - NASNetLarge.
 
 Nuspręsta daryti paprastą binarinę paveikslėlių klasifikaciją.
 Buvo surastos ir naudotos dvi skirtingos duomenų imtys - kačių ir šunų bei virtuvės ir gyvenamojo kambario. Jos abi turėjo 1400 paveikslėlių - 1 300 mokymosi tikslui ir 100 validacijos.
 
-\subsection{Hiperparametrų optimizacija}
+\subsection{Tinklelio paieška}
 
 Taikant paieškos strategiją - tinklelio paiešką - buvo ieškoma geriausių hiperparametrų NASNetMobile ir NASNetLarge modeliams su dviem skirtingais duomenų rinkiniais ir keičiant mokomų sluoksnių skaičių.
 
@@ -446,9 +448,9 @@ Pagal gautus rezultatus buvo nuspręsta išmetimo sluoksnio reikšmę nustatyti 
 
 
 \subsection{Programos veikimas}
-Ankstesniame skyriuje "Technologijos" yra išvardintos visos technologijos, kurios buvo naudotos šiam eksperimentui.
+Ankstesniame skyriuje „Technologijos“ yra išvardintos visos technologijos, kurios buvo naudotos šiam eksperimentui.
 
-Eksperimentui įvykdyti reikėjo paruošti kompiuterį darbui - įrašyti "Python" programavimo įrankius, paruošti "Anaconda" komandinę eilutę, "NVIDIA CUDA" įrankius, Keras ir 
+Eksperimentui įvykdyti reikėjo paruošti kompiuterį darbui - įrašyti „Python“ programavimo įrankius, paruošti „Anaconda“ komandinę eilutę, „NVIDIA CUDA“ įrankius, Keras ir 
 TensorFlow. Naudojamas kompiuteris privalo turėti galingą procesorių ar grafinį procesoriaus bloką - kompiuteris, kuris buvo naudotas eksperimentui, turėjo Nvidia 1080 Ti. 
  
 Keras pateikia modelius, apmokytus su ImageNet, ir jų svorius, todėl reikėjo importuoti 
@@ -540,6 +542,15 @@ Darbo rezultatai:
 \sectionnonum{Išvados}
 
 \printbibliography[heading=bibintoc]
+
+\sectionnonum{Sąvokų apibrėžimai ir santrumpos}
+AutoML - (angl. automated machine learning) automatizuotas mašininis mokymasis.
+
+Hiperparametrai - (angl. hyperparameters) vidiniai neuroninio tinklo parametrai.
+
+Derinimas - (angl. fine-tune) apmokyto modelio dalinis mokymas su kitu duomenų rinkiniu.
+
+Pagreitis - (angl. momentum) dydis, kuris pirmiausiai leidžia greičiau judėti tam kad peršokti lokalius minimumus. Tačiau artėjant link konvergavimo šis dydis mažėja tam kad nebūtų praleistas globalus minimumas. 
 
 \appendix
 \section{Tinklelio paieška}
