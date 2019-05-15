@@ -104,7 +104,7 @@ Dirbtinis neuroninis tinklas yra sluoksnių rinkinys - neuronų grupė sudaro sl
 sluoksnių privalo būti įvesties sluoksnis, kuris atitinkamai pagal užduotį gali gauti įvairios formos informaciją - paveiksliukai, vaizdo
 medžiaga, garsas ir t.t. Ši informacija yra reikalinga tam, kad tinklas galėtų ją išanalizuoti ir išmokti, kad vėliau gavęs panašią
 informaciją galėtų ją atpažinti - tam reikalingas išvesties sluoksnis. Jis yra priešingame dirbtinio neuroninio tinklo gale negu įvesties sluoksnis.
-Tarp anksčiau apibūdintų sluoksnių yra įvairaus dydžio vidinė sluoksnių sistema, kuri atlieka pagrindinį darbą \cite{Woodford-2018}.
+Tarp anksčiau apibūdintų sluoksnių yra įvairaus dydžio vidinė sluoksnių sistema, kuri atlieka pagrindinį darbą.
 
 \subsection{Dirbtinio neuroninio tinklo veikimas}
 Jungtys tarp neuronų yra pateiktos skaitine išraiška ir vadinamos svoriu. Kuo didesnis šis svoris tuo didesnę įtaką turi vienas neuronas kitam.
@@ -262,7 +262,7 @@ maksimumo sujungimo sluoksniai, bet ir vidurkio sujungimo (angl. average pooling
 \subsubsection{Pilno sujungimo sluoksnis}
 Pilno sujungimo sluoksnis (angl. fully connected layer) yra sujungtas su visais 
 neuronais iš sluoksnio buvusio prieš jį. Šio sluoksnio tikslas yra panaudojant tuos požymius, kurios yra gautos iš prieš tai buvusių sluoksnių, nustatyti kokioms 
-klasėms priklauso įvesties paveiksliukas pagal mokymo informacijos imtį, kai neuroninio tinklo problema yra klasifikacija \cite{layers-fullyconnected}. Šiam 
+klasėms priklauso įvesties paveiksliukas pagal mokymo informacijos imtį, kai neuroninio tinklo problema yra klasifikacija \cite{Sinha2018InterweavingC}. Šiam 
 sluoksniui yra priskiriama aktyvacijos funkcija, kuri neprivalo būti tokia pati kaip vidiniuose sluoksniuose naudota aktyvacijos funkcija. 
 
 \subsection{AutoML}
@@ -501,7 +501,7 @@ Modelis buvo derinamas su tokiu pačiu mokomų sluoksnių skaičiumi, bet su kam
 Gauti rezultatai pateikti 21 ir 22 pav. (Priedas nr. 2). Mokymo tikslumas visą laiką buvo mažesnis negu validacijos, tačiau paskutinėje epochoje tikslumai pasiekė tokią pačią reikšmę. O mokymo nuostolis nuolatos mažėjo ir po paskutinės epochos buvo mažesnis už validacijos. 
 
 Po šių derinimų buvo gautos klaidų matricos - 5 ir 6 pav. Su tokiu mokomų sluoksnių skaičiumi modelis derinamas su kambarių rinkiniu teisingai atpažino daugiau klasių negu kad modelis su gyvūnų rinkiniu. 
-Su gyvūnų rinkiniu buvo pasiektas tikslumas - 0.52, atšaukimas - 0.28, precizija - 0.54, kai su kambarių rinkiniu buvo gautas tikslumas - 0.55, atšaukimas - 0.8, precizija - 0.53.
+Su gyvūnų rinkiniu buvo pasiektas tikslumas - 0.52, atšaukimas - 0.28, precizija - 0.54, kai su kambarių rinkiniu buvo gautas tikslumas - 0.55, atšaukimas - 0.80, precizija - 0.53.
 
 \begin{figure}[!htbp]
     \centering
@@ -616,7 +616,7 @@ Taigi, geriausius rezultus modelis suderintas su gyvūnų duomenų rinkiniu pasi
 \sectionnonum{Rezultatai}
 Šio darbo metu buvo tirta dirbtinių neuroninių tinklų ir konvoliucinių neuroninių tinklų veikimas 
 ir jų sudedamosios dalys bei surinkta informacija iš litertūros šaltinių. Atliktas eksperimentas, 
-kurio tikslas buvo pamatyti kokį efektą turi konvoliucinio neuroninio tinklo gylis ir jo suderinimui 
+kurio tikslas buvo pamatyti kokį poveikį turi konvoliucinio neuroninio tinklo gylis ir jo suderinimui 
 naudojamas mažas duomenų rinkinys neuroninio tinklo metrikoms - tikslumui, atšaukimui, precizijai.
 
 Darbo rezultatai:
@@ -628,6 +628,14 @@ Darbo rezultatai:
 \end{enumerate}
 
 \sectionnonum{Išvados}
+Atlikus litertūros šaltinių analizę ir eksperimentą buvo padarytos išvados:
+\begin{enumerate}
+  \item Suderinus skirtingų gylių modelius su dviem skirtingais mažais duomenų rinkiniais ir keičiant mokomų sluoksnių skaičių, buvo nustatyta, kad gilesnis tinklas pasiekė daug aukštesnius rezultatus (tikslumą, atšaukimą, preciziją) negu negilus modelis. Gilaus modelio validacijos tikslumo vidurkis buvo 0.91, atšaukimo vidurkis buvo 0.95 ir precizijos buvo 0.89, kai su tokiais pačiais hiperparametrais ir duomenų rinkiniais negilaus modelio validacijos tikslumo vidurkis buvo 0.58, atšaukimo vidurkis buvo 0.77 bei precizijos vidurkis buvo 0.55. Taigi, šio eksperimento metu gilesnis tinklas pasiekė 58\% didesnį tikslumą, 22\% didesnį atšaukimą ir 60\% didesnią preziją palyginus su negilaus modelio rezultatais.
+  \item Modelis, kuris buvo pirmiausia apmokytas su duomenų rinkiniu, kuriame egzistuoja klasės sutampančios su derinimui naudojamu duomenų rinkinio klasėmis, po suderinimo gaus šiek tiek geresnius rezultatus negu kad toks pat modelis, kuris buvo suderintas su duomenų rinkiniu, kurio klasės nesutampa. Tai buvo nustatyta, kadangi naudojami modeliai buvo apmokyti su ImageNet duomenų baze, kurioje egzistuoja kačių ir šunų klasės, o derinant šiuos modelius su kačių ir šunų duomenų rinkiniais buvo gautas validacijos tikslumo vidurkis 0.77, atšaukimo vidurkis buvo 0.87 bei precizijos vidurkis buvo 0.73, o modelių suderintų su virtuvės ir svetainės duomenų rinkiniu validacijos tikslumo vidurkis buvo 0.73, atšaukimo vidurkis buvo 0.85, o precizijos vidurkis buvo 0.71. Taigi, suderintas modelis su duomenų rinkiniu, kurio klasės yra žinomos modeliui, pasiekia 5\% didesnį tikslumą, 1\% didesnį atšaukimą ir 2\% didesnią preciziją negu suderintas modelis su duomenų rinkiniu, kurio klasės yra naujos modeliui.
+  \item Mokomų sluoksnių skaičius buvo keičiamas derinant skirtingų gylių modelius su dviem skirtingais mažais duomenų rinkiniais. Buvo pasirinkti sluoksnių skaičiai - 5, 10 ir 20. Palyginus visus bandymus geriausi rezultatai buvo pasiekti mokomų sluoksnių skaičių nustačius 20, tačiau derinant gilesnį modelį su virtuvės ir svetainės duomenų rinkiniu geriausias rezultatas buvo pasiektas su 10 mokomų sluoksnių. Su 5-iais mokomais sluoksniais modelis turėjo 0.72 tikslumo vidurkį, 0.88 atšaukimo vidurkį ir 0.71 precizijos vidurkį, su 10-imt mokomų sluoksnių modelio tikslumo vidurkis buvo 0.73, atšaukimo vidurkis buvo 0.75 bei precizijos vidurkis buvo 0.71. Tačiau su 20-imt mokomų sluoksnių modelis turėjo 0.79 tikslumo vidurkį, 0.95 atšaukimo vidurkį ir 0.75 precizijos vidurkį. Taigi, nustačius mokomų sluoksnių skaičių kaip 20 buvo pasiekti geresni rezultatai.
+\end{enumerate}
+
+
 
 \printbibliography[heading=bibintoc]
 
