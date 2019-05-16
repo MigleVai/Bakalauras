@@ -40,19 +40,22 @@
 \maketitle
 \cleardoublepage\pagenumbering{arabic}
 \setcounter{page}{2}
-\tableofcontents
 
 \sectionnonum{Santrauka}
 Šį darbą sudaro teorinė ir eksperimentinė dalys. Teorinėje dalyje pirmiausia yra aprašomas dirbtinis neuroninis tinklas, jo sudėtis ir veikimas. Toliau yra apibrėžiami konvoliuciniai neuroniniai tinklai, jų sudėtis bei esamos architektūros. Taip pat yra apibrėžiamas AutoML ir architektūros paieškos algoritmas, kadangi eksperimentinėje dalyje yra naudojamas NASNet modelis. Šis modelis buvo pasirinktas dėl savo inovatoriškumo bei AutoML panaudojimo. 
-Eksperimentinėje dalyje du NASNet modeliai (NASNet Large ir NASNet Mobile) yra suderinami su dviem skirtingais mažo kiekio duomenų rinkiniais bei keičiant mokomų sluoksnių kiekį. Naudojami du NASNet modeliai, nes jų gyliai skiraisi ir taip galima pamatyti kokią įtaką modelio gylis daro tikslumui. Gauti bandymų rezultatai lyginami, pateikiamos išvados.
+Eksperimentinėje dalyje du NASNet modeliai (NASNet Large ir NASNet Mobile) yra suderinami su dviem skirtingais mažo kiekio duomenų rinkiniais bei keičiant mokomų sluoksnių kiekį. Naudojami du NASNet modeliai, nes jų gyliai skiraisi ir taip galima pamatyti kokią įtaką modelio gylis daro tikslumui bei papildomos metrikoms - atšaukimas ir precizija. 
+Gauti bandymų rezultatai apdorojami ir lyginami, pateikiamos išvados. Per eksperimentą padarytos trys išvados - gilesnis modelis šio eksperimento metu pasirodė daug geriau negu kad negilus modelis, modelio mokymo duomenų rinkinio klasių sutapimas su derinimo duomenų rinkinio klasėmis nesuteikia daug geresnių rezultatų, per šį eksperimentą išbadytų mokomų sluoksnių skaičius parodė, jog didesnis mokomų sluoknsių skaičius derinimo metu pasiekia geresnius rezultatus.
 
 \raktiniaizodziai{NASNet, AutoML, derinimas, konvoliuciniai neuroniniai tinklai, neuroninės architektūros paieškos algoritmas, tikslumas, mažos duomenų imties problema}
 
 \sectionnonum{Summary}
 This work consists of theoretical and experimental parts.  The theoretical part firstly describes the artificial neural network, its structure and functioning. Next, convolutional neural networks, their composition and existing architecture are defined. Also, the AutoML and architecture search algorithm are defined, as the NASNet model is used in the experimental part. This model has been chosen for its innovation and the use of AutoML.
-In the experimental part, two NASNet models (NASNet Large and NASNet Mobile) are fine-tuned with two different small datasets while changing the number of training layers. Two NASNet models are used, because they differ in depth and can be used to see the impact of model depth on accuracy. The obtained test results are compared and conclusions are given.
+In the experimental part, two NASNet models (NASNet Large and NASNet Mobile) are fine-tuned with two different small datasets while changing the number of training layers. Two NASNet models are used, because they differ in depth and can be used to see the impact of model depth on accuracy. 
+The obtained test results are processed and compared, and conclusions are given. In the experiment, three conclusions were made - the deeper model in this experiment proved to be much better than the shallow model, the overlap of the model training data set's classes with fine-tune data set's classes does not yield much better results, the tested amounts of trainable layers in the experiment showed that the higher the number of trainable layers in the model the better results are gotten.
 
 \keywords{NASNet, AutoML, fine-tune, convolutional neural networks, neural architecture search algorithm, accuracy, small dataset problem}
+
+\tableofcontents
 
 \sectionnonum{Įvadas}
 
