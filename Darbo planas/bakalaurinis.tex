@@ -43,8 +43,8 @@
 
 \sectionnonum{Santrauka}
 Šį darbą sudaro teorinė ir eksperimentinė dalys. Teorinėje dalyje pirmiausia yra aprašomas dirbtinis neuroninis tinklas, jo sudėtis ir veikimas. Toliau yra apibrėžiami konvoliuciniai neuroniniai tinklai, jų sudėtis bei esamos architektūros. Taip pat yra apibrėžiamas AutoML ir architektūros paieškos algoritmas, kadangi eksperimentinėje dalyje yra naudojamas NASNet modelis. Šis modelis buvo pasirinktas dėl savo inovatoriškumo bei AutoML panaudojimo. 
-Eksperimentinėje dalyje du NASNet modeliai (NASNet Large ir NASNet Mobile) yra suderinami su dviem skirtingais mažo kiekio duomenų rinkiniais bei keičiant mokomų sluoksnių kiekį. Naudojami du NASNet modeliai, nes jų gyliai skiraisi ir taip galima pamatyti kokią įtaką modelio gylis daro tikslumui bei papildomos metrikoms - atšaukimas ir precizija. 
-Gauti bandymų rezultatai apdorojami ir lyginami, pateikiamos išvados. Per eksperimentą padarytos trys išvados - gilesnis modelis šio eksperimento metu pasirodė daug geriau negu kad negilus modelis, modelio mokymo duomenų rinkinio klasių sutapimas su derinimo duomenų rinkinio klasėmis nesuteikia daug geresnių rezultatų, per šį eksperimentą išbadytų mokomų sluoksnių skaičius parodė, jog didesnis mokomų sluoknsių skaičius derinimo metu pasiekia geresnius rezultatus.
+Eksperimentinėje dalyje du NASNet modeliai (NASNet Large ir NASNet Mobile) yra suderinami su dviem skirtingais mažo kiekio duomenų rinkiniais bei keičiant mokomų sluoksnių kiekį. Naudojami du NASNet modeliai, nes jų gyliai skiriasi ir taip galima pamatyti kokią įtaką modelio gylis daro tikslumui bei papildomos metrikoms - atšaukimas ir precizija. 
+Gauti bandymų rezultatai apdorojami ir lyginami, pateikiamos išvados. Per eksperimentą padarytos trys išvados - gilesnis modelis šio eksperimento metu pasirodė daug geriau negu kad negilus modelis, modelio mokymo duomenų rinkinio klasių sutapimas su derinimo duomenų rinkinio klasėmis nesuteikia daug geresnių rezultatų, per šį eksperimentą išbadytų mokomų sluoksnių skaičius parodė, jog didesnis mokomų sluoksnių skaičius derinimo metu pasiekia geresnius rezultatus.
 
 \raktiniaizodziai{NASNet, AutoML, derinimas, konvoliuciniai neuroniniai tinklai, neuroninės architektūros paieškos algoritmas, tikslumas, mažos duomenų imties problema}
 
@@ -75,7 +75,7 @@ arba „Face ID“ sistema sukurta „Apple“, kuri yra skirta identifikuoti as
 
 Tam kad neuroninius tinklus būtų galima panaudoti kažkokioje sferoje reikia turėti neuroninių tinklų ekspertą bei tinkamai sužymėtą ir didelį duomenų rinkinį (angl. dataset). 
 Mokslininkai ir komercinės įmonės neturinčios žinių neuroninių tinklų ar mašininio mokymosi srityse negali pasinaudoti jų teikiamais privalumais, nes egzistuoja per daug kintamųjų, pavyzdžiui, architektūros pasirinkimas, hiperparametrų optimizavimas, 
-kurie lemia ar tinklas gerai atliks jam paskirtą užduotį \cite{14f00e7a0861477a81f65b5c51f660f4, DBLP:journals/corr/abs-1902-06827}. Taip pat visiems neuroniniams tinklams reikia didelio kiekio duomenų, kadanagi jų tikslumas didėja logaritmiškai \cite{DBLP:journals/corr/ChoLSCD15, DBLP:journals/corr/SunSSG17}. 
+kurie lemia ar tinklas gerai atliks jam paskirtą užduotį \cite{14f00e7a0861477a81f65b5c51f660f4, DBLP:journals/corr/abs-1902-06827}. Taip pat visiems neuroniniams tinklams reikia didelio kiekio duomenų, kadangi jų tikslumas didėja logaritmiškai \cite{DBLP:journals/corr/ChoLSCD15, DBLP:journals/corr/SunSSG17}. 
 Tačiau realiame pasaulyje duomenų kiekis ir žmogiškieji bei laiko resursai yra riboti, todėl yra siekiama keičiant dirbtinio tinklo architektūrą bei jo parametrus gauti kuo didesnį tikslumą. Tad, architektūros paieškos ir parametrų 
 nustatymo automatizavimas turėtų leisti pigiau ir greičiau sukurti efektyvų bei tikslų neuroninį tinklą negu kad tai darant rankiniu būdu \cite{DBLP:journals/corr/RealMSSSLK17}.
 Tokiam procesui atlikti yra naudojamas automatizuotas mašininis mokymasis (angl. Automated Machine Learning (toliau - AutoML)).
@@ -136,7 +136,7 @@ Aktyvavimo funkcija yra skirta tam, kad nustatytų ar neuronui reikia būti akty
 Y = A(\Sigma{(w * d) + b}).
 \end{equation}
 
-Formulėje (2) pateikta raidė \(A\) reiškia bet kokia pasirinkta aktyvavimo funkcija, o jos parametrai \(w\) yra svoris, \(d\) yra įvesties duomenys ir \(b\) yra slenksčio reikšmė. Taigi, ar neuronas bus aktyvuotas priklauso nuo prieš jį 
+Formulėje (2) pateikta raidė \(A\) reiškia bet kokią pasirinktą aktyvavimo funkciją, o jos parametrai - \(w\) yra svoris, \(d\) yra įvesties duomenys ir \(b\) yra slenksčio reikšmė. Taigi, ar neuronas bus aktyvuotas priklauso nuo prieš jį 
 buvusio sluoksnio jungčių dydžio, kurios parodo kiek svarbi yra jungtis tarp neuronų, kadangi kuo didesnis svoris tuo didesnis rezultatas gaunamas svorį sudauginus su įvesties duomenimis. Taip pat slenksčio reikšmė parodo ar reikia 
 sustiprinti ar susiplinti gaunamą rezultatą. \(Y\) reikšmė priklauso nuo pasirinktos aktyvavimo funkcijos išvesties intervalo. Žemiau yra pateiktos kelios aktyvavimo funkcijos su išvesties intervalais.  
 
@@ -155,7 +155,7 @@ Paprasčiausia ir dažniausiai naudojama nuostolio funkcija yra vidutinio kvadra
 ir gauto rezultatų. Tačiau šios funkcijos vienas iš didesnių trūkumų - neproporcingas išskyrimas didelių rezultatų. Kadangi funkcija didėja kvadratiškai,
 o ne tiesiškai, tai gaunamas rezultatas tolsta nuo tikėtino rezultato.
 
-Priklausomai nuo to kokią problemą yra bandoma išspręsti yra naudojamos skirtingos funkcijos. Viena iš problemų yra klasifikacijos - dažniausiai išvesties
+Priklausomai nuo sprendžiamos problemos yra naudojamos skirtingos funkcijos. Viena iš problemų yra klasifikacijos - dažniausiai išvesties
 rezultatas yra tikimybės vertė f(x). Bendrai, funkcijos reikšmės dydis parodo gauto rezultato tikslumą.
 
 Kelios klasifikacijos nuostolio funkcijos:
@@ -169,16 +169,16 @@ Kelios klasifikacijos nuostolio funkcijos:
 \subsection{Optimizavimo funkcijos}
 Optimizavimo funkcijos naudojamos vidinių tinklo parametrų atnaujinimui, kad sumažinti gaunamų rezultatų netikslumą \cite{Niknafs2016NeuralNO}. 
 Visos optimizavimo funkcijos gali būti suskirstytos į du tipus - nuolatinio mokymosi greičio ir prisitaikančio mokymosi. 
-Lentelė 1 buvo parengta remiantis \cite{DBLP:journals/corr/Ruder16} straipsniu. Lentelėje išvardintos visos populiariausios optimizavimo funkcijos.
+Lentelė 1 buvo parengta remiantis \cite{DBLP:journals/corr/Ruder16} straipsniu. Joje išvardintos visos populiariausios optimizavimo funkcijos.
 
 \begin{longtable}[h!]{ | p{2cm} | p{2.2cm} | p{2.5cm} | p{2.5cm} | p{4.5cm} | } 
 \caption{Optimizavimo funkcijos} \\ \hline
 Pavadinimas & Tipas & Privalumai & Trūkumai & Veikimas \\ \hline
 \endhead
 SGD & Nuolatinio mokymosi greičio & Parametrų atnaujinimai turi aukštą dispersiją, kas leidžia lengviau rasti lokalų minimumą. & Didelis svyravimas trukdo konverguoti. & Parametrų atnaujinimas vykdomas kiekvienai mokymo iteracijai. \\ \hline
-Adam & Prisitaikančio mokymosi & Greitai konverguoja ir modelio mokymosi greitis yra didelis bei efektyvus. & Praleidžia mažą lokalų minimumą. & Suskaičiuoja mokymosi greitį kiekvienam parametrui bei saugo eksponentiškai nykstantį prieš tai buvusį kvadratinio gradiento vidurkį ir eksponentiškai mažėjantį prieš tai buvusį gradiento vidurkį, panašų į pagreitį. \\ \hline
+Adam & Prisitaikančio mokymosi & Greitai konverguoja ir modelio mokymosi greitis yra didelis bei efektyvus. & Praleidžia mažą lokalų minimumą. & Suskaičiuoja mokymosi greitį kiekvienam parametrui bei saugo eksponentiškai nykstantį prieš tai buvusį kvadratinio gradiento vidurkį ir eksponentiškai mažėjantį prieš tai buvusį gradiento vidurkį, panašų į pagreitį (angl. momentum). \\ \hline
 Adagrad & Prisitaikančio mokymosi & Nereikia rankiniu būdu derinti mokymosi greičio. & Mokymosi greitis visada yra mažėjantis ir nykstantis, kas lėtina konvergavimą. & Leidžia mokymosi greičiui priklausyti nuo parametrų. Dideli atnaujinimai nedažniems parametrams, maži atnaujinimai dažniems parametrams. \\ \hline
-RMSprop & Prisitaikančio mokymosi & Greitai konverguoja. & Pagreitis (angl. momentum) nedidina funkcijos efektyvumo. & Dalija mokymosi greitį iš eksponentiškai nykstančio kvadratinio gradiento vidurkio. \\ \hline
+RMSprop & Prisitaikančio mokymosi & Greitai konverguoja. & Pagreitis nedidina funkcijos efektyvumo. & Dalija mokymosi greitį iš eksponentiškai nykstančio kvadratinio gradiento vidurkio. \\ \hline
 \end{longtable}
 
 Skyriuje „Dirbtinio neuroninio tinklo veikimas“ minėta, kad sklidimo atgal algoritmas pagal gauto ir norimo 
@@ -195,8 +195,8 @@ kad žemiausia vieta bus peršokta ir bus tolstama nuo jos.
 
 \subsection{Hiperparametrai}
 
-Mašininame mokymesi terminas hiperparametras (angl. hyperparameter) yra naudojamas atskirti parametrus, kurie nėra išmokstami iš duomenų, kurie yra naudojami mokant modelį. Hiperparametrai apima kintamuosius skirtus reguliuoti neuroninį tinklą. Jie turi labai didelį poveikį neuroninio tinklo tikslumui, tačiau pasirinkti jų vertes gali būti sudėtinga, nes įtaką daro architektūra, duomenų rinkinys. Optimalių hiperparametrų radimui yra sugalvota daug metodų, kurie yra aprašyti „Paieškos strategija“ skyriuje. 
-Dalis hiperparametrų yra: mokymosi greitis, epochų ir partijų (angl. batch) vertės, vidinių sluoksnių kiekis, išmetimo sluoksnio reikšmė, aktyvacijos, optimizacijos ir nuostolio funkcijos. 
+Mašininiame mokymesi terminas hiperparametras (angl. hyperparameter) yra naudojamas atskirti parametrus, kurie nėra išmokstami iš duomenų, kurie yra naudojami mokant modelį. Hiperparametrai apima kintamuosius skirtus reguliuoti neuroninį tinklą. Jie turi labai didelį poveikį neuroninio tinklo tikslumui, tačiau pasirinkti jų vertes gali būti sudėtinga, nes įtaką daro architektūra, duomenų rinkinys. Optimalių hiperparametrų radimui yra sugalvota daug metodų, kurie yra aprašyti „Paieškos strategija“ skyriuje. 
+Dalis hiperparametrų yra: mokymosi greitis, epochų ir partijų (angl. batch) dydžiai, vidinių sluoksnių kiekis, išmetimo sluoksnio reikšmė, aktyvacijos, optimizacijos ir nuostolio funkcijos. 
 
 \section{Konvoliucinis neuroninis tinklas}
 Konvoliuciniai neuroniniai tinklai yra labai panašūs į paprastus dirbtinius neuroninius tinklus (daugiau informacijos skyriuje „Dirbtinis neuroninis
@@ -210,7 +210,7 @@ Objektų atpažinimas paveiksliukuose yra sudėtingas dėl šių iššūkių:
 \begin{itemize}
 \item Segmentavimas - paveiksliukai gali atvaizduoti įvairias scenas, kuriose gali būti pavaizduota daug objektų, kurie vienas kita gali dalinai uždengti.
 \item Šviesa - pikselių intensyvumas gali būti paveiktas šviesos šaltinio ar pačio objekto.
-\item Deformacija - objektai gali būti deformuoti įvairiais būdais, pavyzdžiui, kiekvieno žmogaus ranka parašyti skaičiai skiriasi.
+\item Deformacija - objektai gali būti deformuoti įvairiais būdais, pavyzdžiui, žmogaus ranka parašyti skaičiai.
 \item Galimybės - objektų klasės dažnai nustatomos pagal tai kaip patys objektai yra naudojami, pavyzdžiui, kėdės yra objektai sukurti sėdėti, tačiau jos gali turėti skirtingus dizainus.
 \item Žvilgsnio taškas - keičiant vietą iš kurios yra žiūrima gali keistis objekto forma, informacija šokinėja per įvesties sluoksnio dimensiją (t.y. pikselius). 
 \end{itemize}
@@ -224,7 +224,7 @@ Konvoliucija yra matematinė operacija, kuri apibūdina taisyklę, kuri parodo k
     \caption{Konvoliucijos veikimas}
 \end{figure}
 
-Pagal paveiksliuką (1 pav.) matyti, kad įvesties duomenys ir filtras, kuris yra sudarytas iš svorių, yra pateikti 2D matrica. Filtras juda nuo duomenų matricos kairės viršutinės dalies į dešinę, 
+Pagal paveiksliuką (1 pav.) matyti, kad įvesties duomenys ir filtras, kuris yra sudarytas iš svorių, yra pateikti 2D matricomis. Filtras juda nuo įvesties duomenų matricos kairės viršutinės dalies į dešinę, 
 tada yra nuleidžiamas žemiau per vieną eilutę ir taip filtras juda per visą duomenų matricą, kol su visais jos duomenimis filtras yra sudauginamas ir užpildo naują matricą, kuri 
 yra vadinama požymių planu (angl. feature map).
 Tačiau konvoliuciniai tinklai turi daug filtrų, kurie pereina per vieną paveiksliuką, kiekvienas išskirdamas skirtingą paveiksliuko požymį \cite{DBLP:journals/corr/abs-1708-08711}.
@@ -232,8 +232,8 @@ Pirmuose sluoksniuose šiuos filtrus galima apibūdinti kaip horizontalių, vert
 kraštų planą.
 
 \subsection{Konvoliucinio neuroninio tinklo sluoksniai}
-Konvoliuciniai neuroniniai tinklai tai yra sluoksnių rinkinys, kuris turi įvesties, vidinius ir išvesties sluoksnius. Tačiau priklausomai 
-kokio tipo konvoliucinis neuroninis tinklas vidiniai sluoksniai gali skirtis. Konvoliuciniai neuroniniai tinklai turi tris pagrindinius 
+Konvoliuciniai neuroniniai tinklai tai yra sluoksnių rinkinys, kuris turi įvesties, vidinius ir išvesties sluoksnius. Tačiau vidiniai sluoksniai gali skirtis priklausomai 
+nuo konvoliucinio neuroninio tinklo tipo. Konvoliuciniai neuroniniai tinklai turi tris pagrindinius 
 sluoksnių tipus, kurie sudaro vidinį sluoksnį. Šie tipai yra konvoliucinis, sujungimo ir pilno sujungimo sluoksniai \cite{CNNbasic}.
 
 Nepagrindinių sluoksnių paaiškinimai:
@@ -259,20 +259,20 @@ Neuronų kiekis po konvoliucijos (požymių plano dydis) yra nustatomas trimis p
 Periodiškai sujungimo sluoksnis (angl. pooling layer) yra įterpiamas tarp konvoliucinių. Pagrindinis sluoksnio tikslas yra laipsniškai mažinti erdvinį filtruojamo paveiksliuko mastą.
 Šis veiksmas yra atliekamas tam, kad sumažinti parametrų ir skaičiavimų kiekį. Maksimumo sujungimo (angl. max pooling) sluoksnis, nepriklausomai nuo kiekvieno
 sluoksnio gylio, yra erdviškai (ilgis ir plotis) keičiamas ir rezultatas gaunamas naudojant MAX operaciją \cite{7927440}. Dažnai šis sluoksnis yra naudojamas su 2x2 dydžio filtru - įvesties 
-duomenys yra suskaidomi į keturias lygias dalis ir iš kiekvienos dalies paimama didžiausia tos dalies reikšmė, iš šių reikšmių sudaroma nauja matrica. Egzistuoja ne tik 
+duomenys yra suskaidomi į keturias lygias dalis ir iš kiekvienos dalies paimama didžiausia tos dalies reikšmė, iš kurių sudaroma nauja matrica. Egzistuoja ne tik 
 maksimumo sujungimo sluoksniai, bet ir vidurkio sujungimo (angl. average pooling) - jame yra randama ne didžiausia matricos dalies reikšmė, o suskaičiuojamas vidurkis.
 
 \subsubsection{Pilno sujungimo sluoksnis}
 Pilno sujungimo sluoksnis (angl. fully connected layer) yra sujungtas su visais 
-neuronais iš sluoksnio buvusio prieš jį. Šio sluoksnio tikslas yra panaudojant tuos požymius, kurios yra gautos iš prieš tai buvusių sluoksnių, nustatyti kokioms 
+neuronais iš sluoksnio buvusio prieš jį. Šio sluoksnio tikslas yra panaudojant požymius, kurie buvo gauti iš prieš tai buvusių sluoksnių, nustatyti kokioms 
 klasėms priklauso įvesties paveiksliukas pagal mokymo informacijos imtį, kai neuroninio tinklo problema yra klasifikacija \cite{Sinha2018InterweavingC}. Šiam 
 sluoksniui yra priskiriama aktyvacijos funkcija, kuri neprivalo būti tokia pati kaip vidiniuose sluoksniuose naudota aktyvacijos funkcija. 
 
 \subsection{AutoML}
 
-Automatizuotas mašininis mokymasis (angl. automated machine learning) siekia pilnai automatizuoti mašininio mokymosi pritaikymą realaus pasaulio problemoms spręsti. Siekiamybė yra kad vartotojui tereiks pateikti duomenų rinkinį ir AutoML sistema automatiškai nustatys koks būdas yra tinkamiausias pateiktam duomenų rinkiniui. AutoML gali pagerinti našumą ir sutaupyti didelį kiekį laiko ir pinigų, nes nereikės samdyti mašininio mokymo ekspertų \cite{14f00e7a0861477a81f65b5c51f660f4}.
+Automatizuotas mašininis mokymasis (angl. automated machine learning) siekia pilnai automatizuoti mašininio mokymosi pritaikymą realaus pasaulio problemoms spręsti. Siekiamybė yra kad vartotojui tereiks pateikti duomenų rinkinį ir AutoML sistema automatiškai nustatys koks būdas yra tinkamiausias. AutoML gali pagerinti našumą ir sutaupyti didelį kiekį laiko ir pinigų, nes nereikės samdyti mašininio mokymo ekspertų \cite{14f00e7a0861477a81f65b5c51f660f4}.
 
-AutoML tobulinimui spartinti yra rengiamas konkursas - ChaLearn AutoML. Jis pirma kartą surengtas buvo 2014 metais. Konkursas susideda iš kelių etapų - kodo pateikimo, jo vertinimo (validavimo) su viešais duomenų rinkiniais ir atsiliepimų gavimo bei kodo modifikavimo, o finaliniame etape paskutinis kodo pateikimas yra patikrinamas su penkiais skirtingais privačiais duomenų rinkiniais. Pagal gautus rezultatus dalyviai yra reitinguojami.
+AutoML tobulinimui spartinti yra rengiamas konkursas - ChaLearn AutoML, kuris pirmą kartą buvo surengtas 2014 metais. Konkursas susideda iš kelių etapų - kodo pateikimo, jo vertinimo (validavimo) su viešais duomenų rinkiniais ir atsiliepimų gavimo bei kodo modifikavimo, o paskutiniame (finaliniame) etape paskutinis kodo pateikimas yra patikrinamas su penkiais skirtingais privačiais duomenų rinkiniais. Pagal gautus rezultatus dalyviai yra reitinguojami.
 
 \subsection{Architektūros paieškos algoritmas}
 
@@ -282,23 +282,23 @@ NAS metodai yra kategorizuojami pagal tris dimensijas: paieškos erdvę (angl. s
 
 \subsubsection{Paieškos erdvė}
 
-Paieškos erdvė apibrėžia kokia architektūra gali būti pateikta panaudojant žinias apie būdingas savybes esamų architektūrų, kurios yra tinkamos specifiniai užduočiai spręsti, gali stipriai sumažinti paieškos ervdės dydį ir supaprastinti pačią paiešką. 
+Paieškos erdvė apibrėžia kokia architektūra gali būti sukurta panaudojant žinias apie būdingas savybes esamų architektūrų, kurios yra tinkamos panašiai užduočiai spręsti. Tai gali stipriai sumažinti paieškos erdvės dydį ir supaprastinti pačią paiešką. 
 Tačiau pradinių savybių nustatymas priklauso nuo žmogiškumo faktoriaus, kuris gali neleisti atrasti naujų architektūros sudedamųjų blokų.
 Dažniausios paieškos erdvės:
 \begin{itemize}
-    \item Grandinės struktūros neuroninio tinklo (angl. chain-structured neural network) - gali būti aprašyta kaip \(n\) sluoksnių seka, kur i-tasis sluoksnis \(L\textsubscript{i}\) gauna duomenis iš \(i-1\) sluoksnio ir juos toliau siunčia \(i+1\) sluoksniui. Pati erdvė yra parametrizuota pagal maksimalų sluoksnių skaičių, operacijos tipą, kurią vykdo kiekvienas sluoksnis, ir hiperparametrus, kurie asocijuoti su sluoksnių operacijomis.
-    \item Daugiašaknio tinklo (angl. multi-branch network) - naudoja peršokimo juntis (angl. skip connection) bei duomenys keliauja per visas paralelias šaknis, po kurių gauti duomenys yra sujungti ir perduoti toliau esančiam sluoksniui \cite{DBLP:journals/corr/abs-1709-09582}. 
+    \item Grandinės struktūros neuroninio tinklo (angl. chain-structured neural network) - gali būti aprašyta kaip \(n\) sluoksnių seka, kur i-tasis sluoksnis \(L\textsubscript{i}\) gauna duomenis iš \(i-1\) sluoksnio ir juos toliau siunčia \(i+1\) sluoksniui. Pati erdvė yra parametrizuota pagal maksimalų sluoksnių skaičių, operacijos tipą, kurią vykdo kiekvienas sluoksnis, ir hiperparametrus, kurie susiję su sluoksnių operacijomis.
+    \item Daugiašakio tinklo (angl. multi-branch network) - naudoja peršokimo jungtis (angl. skip connection) bei duomenys keliauja per visas paralelias šakas, po kurių gauti duomenys yra sujungti ir perduoti toliau esančiam sluoksniui \cite{DBLP:journals/corr/abs-1709-09582}. 
     \item Celėmis pagrįsta (angl. cell-based) - naudoja normalią (angl. normal) ir mažinimo (angl. reduction) celes. Pirmoji iš celių išlaiko įeinančių duomenų erdvines dimensijas, o kita - mažina. Galutinė architektūra yra sudaroma iš celių, kurios yra sudedamos nustatytu būdu.
 \end{itemize}
 
 \subsubsection{Paieškos strategija}
 
-Paieškos strategija aprašo kaip reikia tirti paieškos erdvę - surasti tinkamiausius architektūros hiperparametrus naudojant spefininį duomenų rinkinį. Paieškos ervdei tyrinėti yra naudojami įvairūs metodai, kurie yra taip pat skirti hiperparametrų optimizacijai (angl. hyperparameter optimization). Dėl paieškos strategijos dimensijos NAS turi didelį persidengimą su hiperparametrų optimizavimu \cite{feurer-automlbook18a}.
+Paieškos strategija aprašo kaip reikia tirti paieškos erdvę - surasti tinkamiausius architektūros hiperparametrus naudojant specifinį duomenų rinkinį. Paieškos erdvei tyrinėti yra naudojami įvairūs metodai, kurie yra taip pat skirti hiperparametrų optimizacijai (angl. hyperparameter optimization). NAS turi didelį persidengimą su hiperparametrų optimizavimu dėl paieškos strategijos dimensijos \cite{feurer-automlbook18a}.
 Skirtingos paieškos strategijos:
 \begin{itemize}
-    \item Tinklelio paieška (angl. grid search) - išsamiai išnagrinėja rankiniu būdų nustatytą hiperparametrų konfiguraciją iki priimtino modelio tikslumo. 
-    \item Atsitiktinė paieška (angl. random search) - bandomos atsitiktinės hiperparametrų kombinacijos, kad rasti geriausią modelį. Ši strategija randa geresnius modelius net jei yra ieškoma didesnė ir mažiau perspekytvi paieškos erdvė \cite{Bergstra:2012:RSH:2503308.2188395}. 
-    \item Evoliuciniai metodai (angl. evolutionary methods) - vysto modelių populiaciją (tinklų rinkinys). Kiekviename evoliucijos žingsnyje bent vienas modelis iš populiacijos yra atrenkamas ir tampa pagrindiniu (tėviniu), kad jam taikant mutacijas būtų sugeneruoti palikuonys. Mutacijos NAS kontekste yra lokalios operacijos, kaip kad pridėjimas ar atėmimas sluoksnio, pridėjimas peršokimo jungties, hiperparametrų keitimas. Apmokius palikuonis jų tikslumas yra patikrinamas su valdiacijos duomenų rinkiniu, tada jie yra pridedami prie populiacijos. Tuomet populiacija yra išrūšiuojama pagal tikslumą ir blogiausių pusė yra išimama iš populiacijos. Šie žingsniai vykdomi iki tol kol baigiasi nustatyti resursai \cite{DBLP:journals/corr/abs-1812-05866}.
+    \item Tinklelio paieška (angl. grid search) - rankiniu būdų išsamiai išnagrinėja nustatytą hiperparametrų konfiguraciją iki priimtino modelio tikslumo. 
+    \item Atsitiktinė paieška (angl. random search) - bandomos atsitiktinės hiperparametrų kombinacijos, kad rasti geriausią modelį. Ši strategija randa geresnius modelius net jei yra ieškoma didesnė ir mažiau perspektyvi paieškos erdvė \cite{Bergstra:2012:RSH:2503308.2188395}. 
+    \item Evoliuciniai metodai (angl. evolutionary methods) - vysto modelių populiaciją (tinklų rinkinys). Kiekviename evoliucijos žingsnyje bent vienas modelis iš populiacijos yra atrenkamas ir tampa pagrindiniu (tėviniu), kad jam taikant mutacijas būtų sugeneruoti palikuonys. Mutacijos NAS kontekste yra lokalios operacijos, kaip kad pridėjimas ar atėmimas sluoksnio, pridėjimas peršokimo jungties, hiperparametrų keitimas. Apmokius palikuonis jų tikslumas yra patikrinamas su validacijos duomenų rinkiniu, tada jie yra pridedami prie populiacijos. Tuomet populiacija yra išrūšiuojama pagal tikslumą ir blogiausių pusė yra išimama iš populiacijos. Šie žingsniai vykdomi iki tol kol baigiasi nustatyti resursai \cite{DBLP:journals/corr/abs-1812-05866}.
     \item Bajeso optimizacija (angl. Bayesian optimization) - efektyviai randa nežinomos funkcijos globalųjį maksimumą apibrėžtoje paieškos erdvėje. Ši strategija susideda iš dviejų dalių. Pirmoji yra surogatinis modelis, kuris susideda iš ankstesnio pasiskirstymo, kuris užfiksuoja įsitikinimus apie nežinomos objektyvios funkcijos elgesį, ir stebėjimo modelio, apibūdinančio duomenų generavimo mechanizmą. O antroji yra nuostolio funkcija, kuri aprašo užklausų sekos optimalumą \cite{7352306}. 
     \item Skatinamasis mokymasis (angl. reinforcement learning) - generavimas architektūros gali būti laikomas agento veiksmu, kai veiksmų erdvė yra identiška paieškos erdvei. Agento apdovanojimas yra pagrįstas apmokytos architektūros veikimo tikslumu su nematytais duomenimis. Agentui nėra apibrėžiama kokius veiksmus reikia daryti, bet jis pats privalo atrasti veiksmus, kurie duoda daugiausia apdovanojimų, juos bandydamas \cite{Sutton:1998:IRL:551283}.
 \end{itemize}
@@ -308,14 +308,14 @@ Skirtingos paieškos strategijos:
 NAS tikslas yra surasti architektūrą, kuri gali įgyti aukštą nuspėjimo nustatymą (tikslumą) su nematytais duomenimis. Vykdymo vertinimas reikalingas įvertinti šį nustatymo procesą. Paprasčiausias būdas yra apmokyti ir validuoti architektūrą, bet tai daryti yra brangu ir limituoja skaičių architektūrų, kurias būtų galima ištirti. 
 Tokiam architektūrų įvertinimui atlikti yra naudojami metodai, kurie sumažintų vykdymo vertinimo kainą:
 \begin{itemize}
-    \item Nepilno veikimo tikslumo vertinimas (angl. lower fidelity estimates) - veikimas gali būti vertinamas remiantis tikslumu po pilno mokymo naudojant tikrojo veikimo mažesnią dalį - mažesnį mokymo laiko intervalą, dalį mokymo duomenų rinkinio, mažesnę paveiksliukų rezoliuciją ar mažesnį filtrų kiekį per sluoknsį ir mažiau celių. 
+    \item Nepilno veikimo tikslumo vertinimas (angl. lower fidelity estimates) - veikimas gali būti vertinamas remiantis tikslumu po pilno mokymo naudojant tikrojo veikimo mažesnią dalį - mažesnį mokymo laiko intervalą, dalį mokymo duomenų rinkinio, mažesnę paveiksliukų rezoliuciją ar mažesnį filtrų kiekį per sluoksnį ir mažiau celių. 
     \item Mokymosi kreivės ekstrapoliacija (angl. learning curve extrapolation) - mokymo laikas gali būti sumažinamas, kadangi veikimas gali būti ekstrapoliuotas po kelių mokymo epochų.
     \item Svorio paveldėjimas arba tinklo morfizmai (angl. weight inheritance or network morphisms) - naujos architektūros svorius nustatyti pagal jau apmokytos architektūros svorius, dėl to nereikia mokinti architektūros nuo pradžių, nes svoriai yra paveldimi. Tinklo morfizmas leidžia modifikuoti architektūrą paliekant funkciją, kuri yra reprezentuojama to tinklo, nepakeistą.
     \item Vieno bandymo modeliai arba svorio dalinimasis (angl. one-shot models or weight sharing) - tik vienas modelis turi būti apmokytas, nes jo svoriai yra padalijami per visas skirtingas architektūras, kurios yra pografiai pradinio modelio.
 \end{itemize}
 
 \subsection{Architektūros}
-Konvoliuciniai neuroniniai tinklai turi keletą skirtingų architektūrų, kurios naudojamos pagal sprendžiamą problemą. 1 lentelėje pateikta informaciją 
+Konvoliuciniai neuroniniai tinklai turi keletą skirtingų architektūrų, kurios naudojamos pagal sprendžiamą problemą. 2=oje lentelėje pateikta informaciją 
 apie įvairias architektūras.
 
 \begin{longtable}[h]{ | p{2cm} | p{1cm} | p{3cm} | p{7cm} | p{1.5cm} | } 
@@ -351,7 +351,7 @@ Toks suderinimas yra galimas, nes pirmuosiuose sluoksniuose neuroniniai tinklai 
 daugeliui duomenų rinkinių ir užduočių \cite{DBLP:journals/corr/YosinskiCBL14}.
 
 \subsection{Klaidų matrica}
-Klaidų matrica (angl. confusion matrix) yra lentelė, kuri yra naudojama parodyti klasifikacijos modelio veikimą su validacijos duomenimis, kai yra žinomos teisingos reikšmės. Matrica leidžia vizualizuoti modelio veikimą bei lengvai parodo maišymasi tarp specifinių klasių.
+Klaidų matrica (angl. confusion matrix) yra lentelė, kuri yra naudojama parodyti klasifikacijos modelio veikimą su validacijos duomenimis, kai yra žinomos teisingos reikšmės. Matrica leidžia vizualizuoti modelio veikimą bei lengvai parodo maišymąsi tarp specifinių klasių.
 
 Klaidų matricoje yra naudojamos šios sąvokos:
 \begin{itemize}
@@ -361,19 +361,19 @@ Klaidų matricoje yra naudojamos šios sąvokos:
     \item NN (netikri neigiami) - spėjimas yra neigiamas, tačiau jis yra neteisingas.
 \end{itemize}
 
-Šios sąvokos yra savo sutrumpinimais pavaizduotos 1 pav. 
+Šios sąvokos savo sutrumpinimais yra pavaizduotos 2 paveiksliuke. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{img/KlaiduMatrica.png}
     \caption{Klaidų matricos pavyzdys}
     \label{fig:architecture}
 \end{figure}
-Taigi, jeigu modelis įvardina dalį klasės 1 paveiksliukų kaip klasę 1 tai tų paveiksliukų kiekis yra įrašomas į TT matricos laukelį. Tačiau jei modelis klasės 1 paveiksliukus įvardina kaip klasę 2, tai tas paveiksliukų skaičius yra įrašomas į NT laukelį. Tas pats vyksta su klasės 2 paveiksliukais, jeigu jie yra įvardinami kaip klasės 2 paveiksliukai, tas kiekis įrašomas į TN laukelį, tačiau jei kažkiek paveiksliukų įvardinama kaip klasės 1, tas skaičius įrašomas į NN laukelį. 
+Jeigu modelis įvardina dalį klasės 1 paveiksliukų kaip klasę 1 tai tų paveiksliukų kiekis yra įrašomas į TT matricos laukelį. Tačiau jei modelis klasės 1 paveiksliukus įvardina kaip klasę 2, tai tas paveiksliukų skaičius yra įrašomas į NT laukelį. Tas pats vyksta su klasės 2 paveiksliukais, jeigu jie yra įvardinami kaip klasės 2 paveiksliukai, tas kiekis įrašomas į TN laukelį, tačiau jei kažkiek paveiksliukų įvardinama kaip klasės 1, tas skaičius įrašomas į NN laukelį. 
 
 Pagal klaidų matricos duomenis galima apskaičiuoti kelias modelio metrikas - tikslumas, atšaukimas ir precizija.
 
 \subsubsection{Tikslumas}
-Tikslumas (angl. accuracy) yra matavimas, kuris parodo santykį tarp teisingai spėjimų (angl. prediction) ir iš viso darytų spėjimų.
+Tikslumas (angl. accuracy) yra matavimas, kuris parodo santykį tarp teisingų spėjimų (angl. prediction) ir iš viso darytų spėjimų.
 \begin{equation}
 \textit{tikslumas} = \frac{TT + TN}{TT + TN + NT + NN}.
 \end{equation}
@@ -382,7 +382,7 @@ Formulės (3) parametras \(TT\) yra skaičius tikrų teigiamų spėjimų, \(TN\)
 Turinti pagal klases nesubalansuotą duomenų rinkinį (pvz. viena klasė turi daug daugiau duomenų negu likusios), tikslumo metrika nepilnai atskleidžia modelio gerumą. Pavyzdžiui, kačių nuotraukų yra 9, o šunų yra 91, modelis teisingai atpažįsta 1 katę ir 90 šunų, tikslumas bus 0.91, nors tik viena katė buvo atpažinta. 
 
 \subsubsection{Atšaukimas}
-Atšaukimas (angl. recall) yra metrika, kuri parodo santykį tarp visų teisingai atpažintų spėjimų ir visų esamų teigiamų spėjimų.
+Atšaukimas (angl. recall) yra metrika, kuri parodo santykį tarp visų teisingų spėjimų ir visų esamų teigiamų spėjimų.
 \begin{equation}
 \textit{atšaukimas} = \frac{TT}{TT + NN}.
 \end{equation}
@@ -404,7 +404,7 @@ bei glaustai apibrėžti jų pagrindiniai funkcionalumai.
 
 \subsection{ImageNet}
 Projektas ImageNet buvo sugalvotas profesorės Li Fei-Fei 2009 metais. Projekto tikslas buvo sukurti didelę sukategorizuotų paveiksliukų ir jų etikečių duomenų bazę, 
-kuri butų skirta vizualinio objekto atpažinimo programinės įrangos tyrimams. Ši duomenų bazė yra suorganizuota pagal WorldNet hierarchija - anglų kalbos žodžiai 
+kuri butų skirta vizualinio objektų atpažinimo programinės įrangos tyrimams. Ši duomenų bazė yra suorganizuota pagal WorldNet hierarchiją - anglų kalbos žodžiai 
 yra grupuojami į sinonimų rinkinius, kurie turi apibūdinimus ir naudojimo pavyzdžius bei saugo ryšių kiekį tarp sinonimų arba jų narių. ImageNet turi daugiau nei 
 100 000 sinonimų rinkinių, kur didžioji dalis yra daiktavardžiai (80 000+). 
 
@@ -426,26 +426,26 @@ platformose - procesoriuose, grafikos procesoriuose. Sukurtas „Google“ dirbt
 dėl bibliotekos ir skaičiavimų lankstumo yra naudojamas įvairiose mokslinėse srityse.
 
 \section{Modelių derinimas su mažu duomenų rinkiniu} 
-Šio eksperimento tikslas yra išanalizuoti skirtingų gylių neuroninius tinklus pagal metrikas gautas po mokymo ir validavimo naudojant mažą duomenų rinkinį. 
+Šio eksperimento tikslas yra išanalizuoti skirtingų gylių neuroninius tinklus pagal metrikas gautas po mokymo ir validavimo naudojant mažus duomenų rinkinius. 
 Poskyriuje „Architektūros“ yra trumpai apibūdinti pagrindiniai konvoliucinių neuroninių tinklų tipai. 
-Iš jų buvo išsirinktas NASNet, kadangi jis yra inovatoriškiausias ir geriausią tikslumą turintis. Negilusis modelis buvo NASNetMobile, o gilusis - NASNetLarge.
+Iš jų buvo išsirinktas NASNet, kadangi jis yra inovatoriškiausias ir turintis geriausią tikslumą. Negilusis modelis buvo NASNetMobile, o gilusis - NASNetLarge.
 
 Nuspręsta daryti paprastą binarinę paveikslėlių klasifikaciją.
-Buvo surastos ir naudotos dvi skirtingos duomenų imtys - kačių ir šunų bei virtuvės ir gyvenamojo kambario. Jos abi turėjo 1400 paveikslėlių - 1 300 mokymosi tikslui ir 100 validacijos.
+Buvo surastos ir naudotos dvi skirtingos duomenų imtys - kačių ir šunų bei virtuvės ir svetainės. Jos abi turėjo 1400 paveikslėlių - 1 300 mokymosi tikslui ir 100 validacijos.
 
 \subsection{Tinklelio paieška}
 
-Taikant paieškos strategiją - tinklelio paiešką - buvo ieškoma geriausių hiperparametrų NASNetMobile ir NASNetLarge modeliams su dviem skirtingais duomenų rinkiniais ir keičiant mokomų sluoksnių skaičių.
+Taikant paieškos strategiją - tinklelio paiešką - buvo ieškoma geriausių hiperparametrų NASNetMobile ir NASNetLarge modeliams su dviem skirtingais duomenų rinkiniais.
 
 Pagal naudojamo kompiuterio pajėgumą buvo nuspręsta tyrinėti:
 \begin{itemize}
     \item Išmetimo sluoksnio reikšmę - 0.25, 0.5 ir 0,75.
     \item Optimizavimo funkciją - RMSprop, Adam, Adagrad.
     \item Mokymosi greitį - 0.0005, 0.0001 ir 0.001.
-    \item Mokomų sluoksnių skaičius - 5, 10, 20.
+    \item Mokomų sluoksnių skaičių - 5, 10, 20.
 \end{itemize}
 
-Iš visų šių hiperparametrų susidarė 27 kombinacijos bei jos buvo analizuojamos 12 kartų - su NASNetMobile ir dviem skirtingais duomenų rinkiniais bei keičiant mokomų sluoksnių skaičių, su NASNetLarge ir tais pačiais duomenų rinkiniais bei keičiant mokomų sluoksnių skaičių.
+Iš visų šių hiperparametrų susidarė 81 kombinacijos bei jos buvo analizuojamos 4 kartus - su NASNetMobile ir dviem skirtingais duomenų rinkiniais, su NASNetLarge ir tais pačiais duomenų rinkiniais.
 Pagrindinis rezultatų rikiavimo kriterijus buvo tikslumas, antrinis - atšaukimas, o paskutinis buvo precizija. Visi rezultatai pateikti Prieduose esančioje 3 lentelėje. 
 Pagal gautus rezultatus buvo nuspręsta išmetimo sluoksnio reikšmę nustatyti 0.25, optimizavimo funkciją kaip Adagrad su 0.0001 mokymosi greičiu.
 
@@ -458,17 +458,17 @@ TensorFlow. Naudojamas kompiuteris privalo turėti galingą procesorių ar grafi
  
 Keras pateikia modelius, apmokytus su ImageNet, ir jų svorius, todėl reikėjo importuoti 
 tinkamą modelį - šiuo atveju NASNet. Importavimo metu padaryti nustatymai - pilnai sujungtas sluoksnis nepridedamas, kadangi tada galima parinkti kokių dimensijų 
-paveiksliukai naudojami ir kiek spalvų sluoksnių jie turi (standartiniai paveiksliukai turi 3). Tuomet reikėjo nustatyti kiek importuoto modelio sluoksnių bus mokoma norima - 5, 10 ir 20. 
+paveiksliukai naudojami ir kiek spalvų sluoksnių jie turi (standartiniai paveiksliukai turi 3). Tuomet reikėjo nustatyti kiek importuoto modelio sluoksnių bus norima mokyti - 5, 10 ir 20. 
 Po šių egzistuojančio modelio paruošimų reikėjo sukurti naują Kero modelį, prie kurio reikėjo pridėti paruoštą egzistuojantį modelį bei pridėti kelis kitus sluoksnius tam tikru išsidėstymu - 
 plokštinimo (angl. flatten), tankumo (angl. dense), išmetimo (angl. dropout) ir vėl tankumo. Pirmasis tankumo sluoksnis turi aktyvacijos funkciją ReLU, o paskutinis - sigmoidinę. 
 Po visų sluoksnių pridėjimo negilus modelis iš viso turėjo 4 405 141 parametrų, o gilusis modelis turėjo 85 916 818.
 
 Po modelio paruošimo, reikėjo nustatyti kokio dydžio paveikslėlių partijomis (angl. batch) bus mokomas ir validuojamas modelis. Geriausias partijos dydis naudotam kompiuteriui buvo mokymosi partijai 130 paveikslėlių, o validacijos - 10.
-Tuomet nustatomas paveikslėlių aplankalo kelias, jų ir partijos dydis bei nustatomas klasės režimas į binarinį, nes duomenų imtis susideda iš dviejų klasių - kačių ir šunų arba virtuvės ir gyvenamojo kambario.
+Pateikiamas paveikslėlių aplankalo kelias, klasių tipas nustatomas į binarinį, nes duomenų imtis susideda iš dviejų klasių - kačių ir šunų arba virtuvės ir svetainės.
 
-Po modelio ir paveikslėlių rinkinio paruošimo buvo pradėta mokinti ir validuoti modelį. Taigi, modelio kompiliavimo metode nuostolio 
-funkcija buvo nustatyta binarine kryžiaus entropija, o optimizavimo funkcija - Adagrad. Po modelio sukompiliavimo buvo paleidžiamas mokymo metodas, kuriam turi būti pateikta - paruošti paveiksliukai, žingsnis per epochą, epochų kiekis, 
-paruošti validacijos paveiksliukai ir jų žingsnis. Epochų kiekis šiame eksperimente buvo nustatyta 5.
+Po modelio ir paveikslėlių rinkinio paruošimo buvo pradėta mokinti ir validuoti modelį. Taigi, modelio paruošimo metode nuostolio 
+funkcija buvo nustatyta binarine kryžiaus entropija, o optimizavimo funkcija - Adagrad. Po modelio paruošimo buvo paleidstas mokymo metodas, kuriam buvo pateikta - paruošti paveiksliukai, žingsnis per epochą, epochų kiekis, 
+paruošti validacijos paveiksliukai ir jų žingsnis. Epochų kiekis šiame eksperimente buvo nustatytas 5-iems.
 
 \subsection{Modelių derinimas}
 Buvo pradėta derinti ir validuoti modelius su skirtingais duomenų rinkiniais ir keičiant mokomų sluoksnių skaičių.
@@ -476,13 +476,13 @@ Buvo pradėta derinti ir validuoti modelius su skirtingais duomenų rinkiniais i
 \subsubsection{Negilaus modelio derinimas}
 Eksperimentas buvo pradėtas nuo negilaus modelio (NASNetMobile) derinimo.
 
-NASNetMobile modelis buvo derinamas su gyvūnų (kačių ir šunų) duomenų rinkiniu ir mokomų sluoksnių skaičiumus buvo nustatytas 5-iems.
-Po derinimo buvo gauti tikslumo ir nuostolio grafai - 15 ir 16 pav. (Priedas nr. 2). Iš jų matyti kad mokymo tikslumas tiesiškai augo, o nuostolis tiesiškai mažėjo, tačiau validacijos tikslumas nuo 0.5 pakilo tik 0.5 ir nuostolis išliko autkštas.
+NASNetMobile modelis buvo derinamas su gyvūnų (kačių ir šunų) duomenų rinkiniu ir mokomų sluoksnių skaičius buvo nustatytas 5-iems.
+Po derinimo buvo gauti tikslumo ir nuostolio grafikai - 15 ir 16 pav. (Priedas nr. 2). Iš jų matyti kad mokymo tikslumas tiesiškai augo, o nuostolis tiesiškai mažėjo, tačiau validacijos tikslumas nuo 0.5 pakilo tik 0.05 ir nuostolis išliko aukštas.
 
-Po to modelis buvo derinamas su kambarių (virtuvės ir svetainės) duomenų rinkiniu bei tokiu pačių mokomų sluoksnių skaičiumi.
-Gauti rezultatai pateikti 17 ir 18 pav. (Priedas nr. 2). Mokymo ir validavijos tikslumas nepasiekė tokio tikslumo kaip kad modelį derinant su gyvūnų rinkiniu, nors ir mokymo tikslumas nuolatos didėjo, validacijos tikslumas svyravo ir paskutinėje epochoje pasiekė mažiausias reikšmes. Tačiau nuostolio grafikas parodo tokias pačias tendencijas kaip kad derinant su gyvūnų rinkiniu.
+Po to modelis buvo derinamas su kambarių (virtuvės ir svetainės) duomenų rinkiniu bei tokiu pačiu mokomų sluoksnių skaičiumi.
+Gauti rezultatai pateikti 17 ir 18 pav. (Priedas nr. 2). Mokymo ir validacijos tikslumas nepasiekė tokio tikslumo kaip kad modelį derinant su gyvūnų rinkiniu, nors ir mokymo tikslumas nuolatos didėjo, validacijos tikslumas svyravo ir paskutinėje epochoje pasiekė mažiausias reikšmes. Tačiau nuostolio grafikas parodo tokias pačias tendencijas kaip kad derinant su gyvūnų rinkiniu.
 
-Taigi, iš gautų klaidų matricų (3 ir 4 pav.) galima matyti, jog derinant modelį su gyvūnų rinkiniu buvo geriau nustatytos klasės. 
+Taigi, iš gautų klaidų matricų (3 ir 4 pav.) galima matyti, jog derinant modelį su gyvūnų rinkiniu klasės buvo geriau nustatytos. 
 Su gyvūnų rinkiniu buvo pasiektas tikslumas - 0.57, atšaukimas - 0.94, precizija - 0.54, kai su kambarių rinkiniu buvo gautas tikslumas - 0.53, atšaukimas - 0.74, precizija - 0.52.
 \begin{figure}[!htbp]
     \centering
@@ -520,10 +520,10 @@ Su gyvūnų rinkiniu buvo pasiektas tikslumas - 0.52, atšaukimas - 0.28, preciz
 \end{figure}
 
 Negilaus modelio derinimas buvo daromas su 20 mokomų sluoksnių ir gyvūnų duomenų rinkiniu.
-Po derinimo buvo gauti tikslumo ir nuostolio grafai - 23 ir 24 pav. (Priedas nr. 2). Juose pateikta kad mokymo ir validacijos tikslumas kilo, nors validacijos tikslumas 2-oje epochoje buvo sumažėjęs. O nuostolio grafikai pateikta kad mokymo ir validacijos reikšmės nuolatos mažėjo, tačiau mokymo nuostolis mažėjo daug greičiau.
+Po derinimo buvo gauti tikslumo ir nuostolio grafikai - 23 ir 24 pav. (Priedas nr. 2). Juose pateikta kad mokymo ir validacijos tikslumas kilo, nors validacijos tikslumas 2-oje epochoje buvo sumažėjęs. O nuostolio grafikai pateikta kad mokymo ir validacijos reikšmės nuolatos mažėjo, tačiau mokymo nuostolis mažėjo daug greičiau.
 
 Paskutinis NASNetMobile modelio derinimas buvo daromas su kambarių duomenų rinkiniu ir tokiu pačiu mokomų sluoksnių skaičiumi kaip kad su gyvūnų rinkiniu. 
-Gauti rezultatai pateikti 25 ir 26 pav. (Priedas nr. 2). Juose yra pateikta jog mokymo ir validacijos tikslumas nuolatos didėjo, o nuostolis mažėjo nors validacijos tikslumas ir nuostolis daug plokščiau negu kad mokymosi tikslumas ir nuostolis.
+Gauti rezultatai pateikti 25 ir 26 pav. (Priedas nr. 2). Juose yra pateikta jog mokymo ir validacijos tikslumas nuolatos didėjo, o nuostolis mažėjo. Nors validacijos tikslumas ir nuostolis daug plokščiau keitėsi negu kad mokymosi tikslumas ir nuostolis.
 
 Po paskutinių negilaus modelio derinimų buvo gautos klaidų matricos, kurios pateiktos 7 ir 8 pav. Jose parodyta jog modelis derintas su gyvūnų duomenų rinkiniu pranoko modelį derintą su kambarių duomenų rinkiniu.
 Su gyvūnų rinkiniu buvo pasiektas tikslumas - 0.69, atšaukimas - 1.00, precizija - 0.62, kai su kambarių rinkiniu buvo gautas tikslumas - 0.61, atšaukimas - 0.88, precizija - 0.57.
@@ -541,17 +541,17 @@ Su gyvūnų rinkiniu buvo pasiektas tikslumas - 0.69, atšaukimas - 1.00, preciz
     \end{minipage}
 \end{figure}
 
-Taigi, derinant negilų modelį su gyvūnų arba kambarių duomenų rinkiniais aukščiausias tikslumas, atšaukimas ir precizija buvo pasiekti mokomų sluoksnių skaičių nustačius 20. Tačiau modeliai, kurie buvo suderinti su gyvūnų duomenų rinkiniu, dažniau pasiekė aukštesnius rezultatus negu modeliai, kurie buvo suderinti su kambarių rinkiniu. 
+Taigi, derinant negilų modelį su gyvūnų arba kambarių duomenų rinkiniais aukščiausias tikslumas, atšaukimas ir precizija buvo pasiekti mokomų sluoksnių skaičių nustačius 20. Taip pat modeliai, kurie buvo suderinti su gyvūnų duomenų rinkiniu, dažniau pasiekė aukštesnius rezultatus negu modeliai, kurie buvo suderinti su kambarių rinkiniu. 
 %--------------------------------------------------------------------------------------------
 
 \subsubsection{Gilaus modelio derinimas}
 Eksperimentas buvo pratęstas naudojant gilų modelį (NASNetLarge).
 
-Gilų modelį derinti buvo pradėta su gyvūnų duomenų rinkiu ir 5-iais mokomais sluoksniais.
-Gauti rezultatai pateikti 27 ir 28 pav. (Priedas nr. 2). Modelio mokymo tiklsumas augo logaritmiškai, o validacijos tikslumas nuolatos plokščiai mažėjo. Nors mokymo ir validacijos nuostoliai panašiai nuolatos mažėjo.
+Gilų modelį derinti buvo pradėta su gyvūnų duomenų rinkiniu ir 5-iais mokomais sluoksniais.
+Gauti rezultatai pateikti 27 ir 28 pav. (Priedas nr. 2). Modelio mokymo tikslumas augo logaritmiškai, o validacijos tikslumas nuolatos plokščiai mažėjo. Nors mokymo ir validacijos nuostoliai panašiai nuolatos mažėjo.
 
 Po to gilus modelis buvo apmokytas su kambarių duomenų rinkiniu ir 5-iais mokomais sluoksniais.
-Po derinimo buvo gauti tikslumo ir nuostolio grafai - 29 ir 30 pav. (Priedas nr. 2). Juose pateikta kad validacijos tikslumas šiek tiek svyravo, bet nuolatos augo ir buvo didesnis už mokymo tikslumą. O mokymo ir validacijos nuostoliai nuolatos panašiai mažėjo.
+Po derinimo buvo gauti tikslumo ir nuostolio grafikai - 29 ir 30 pav. (Priedas nr. 2). Juose pateikta kad validacijos tikslumas šiek tiek svyravo, bet nuolatos augo ir buvo didesnis už mokymo tikslumą. O mokymo ir validacijos nuostoliai nuolatos panašiai mažėjo.
 
 Po derinimų buvo gautos klaidų matricos, kurios pateiktos 9 ir 10 pav. Jose parodyta, jog modelis suderintas su gyvūnų duomenų rinkiniu atpažino šiek tiek daugiau klasių negu kad modelis apmokytas su kambarių duomenų rinkiniu.
 Su gyvūnų rinkiniu buvo pasiektas tikslumas - 0.92, atšaukimas - 0.98, precizija - 0.88, kai su kambarių rinkiniu buvo gautas tikslumas - 0.87, atšaukimas - 0.86, precizija - 0.88.
@@ -569,7 +569,7 @@ Su gyvūnų rinkiniu buvo pasiektas tikslumas - 0.92, atšaukimas - 0.98, preciz
     \end{minipage}
 \end{figure}
 
-NASNetLarge buvo derinamas su gyvūnų duomenų rinkiniu ir mokomų sluoksnių skaičiumus buvo nustatytas 10.
+NASNetLarge buvo derinamas su gyvūnų duomenų rinkiniu ir mokomų sluoksnių skaičius buvo nustatytas 10.
 Gauti rezultatai pateikti 31 ir 32 pav. (Priedas nr. 2). Juose pateikta jog mokymo ir validacijos tikslumas auga, tačiau paskutinėse keliose epochose pradeda mažėti. O mokymo ir validacijos nuostoliai nuolatos mažėja.
 
 Modelis iš naujo derinamas su kambarių duomenų rinkiniu ir tokiu pačiu mokomų sluoksnių skaičiumi kaip kad su gyvūnų rinkiniu.
@@ -618,22 +618,22 @@ Taigi, geriausius rezultus modelis suderintas su gyvūnų duomenų rinkiniu pasi
 
 \sectionnonum{Rezultatai}
 Šio darbo metu buvo tirta dirbtinių neuroninių tinklų ir konvoliucinių neuroninių tinklų veikimas 
-ir jų sudedamosios dalys bei surinkta informacija iš litertūros šaltinių. Atliktas eksperimentas, 
+ir jų sudedamosios dalys bei surinkta informacija iš literatūros šaltinių. Atliktas eksperimentas, 
 kurio tikslas buvo pamatyti kokį poveikį turi konvoliucinio neuroninio tinklo gylis ir jo suderinimui 
 naudojamas mažas duomenų rinkinys neuroninio tinklo metrikoms - tikslumui, atšaukimui, precizijai.
 
 Darbo rezultatai:
 \begin{enumerate}
     \item Buvo atlikta bendra dirbtinių neuroninių tinklų ir konvoliucinių neuroninių tinklų bei NAS algoritmo analizė.
-    \item Buvo rasti geriausi hiperparametrai (optimizavimo funkcija, mokymosi greitis, išmetimo sluoksnio reikšmė) NASNetLarge ir NASNetMobile modeliams naudojant du skirtingus duomenų rinkinius bei keičiant mokomų sluoknsių skaičių.
-    \item Egzistuojantys NASNetLarge ir NASNetMobile modeliai buvo modifikuoti binariniai klasifikacijai ir suderinti naudojant du skirtingus duomenų rinkinius - kačių ir šunų bei virtuvės ir gyvenamojo kambario.
+    \item Buvo rasti geriausi hiperparametrai (optimizavimo funkcija, mokymosi greitis, išmetimo sluoksnio reikšmė) NASNetLarge ir NASNetMobile modeliams naudojant du skirtingus duomenų rinkinius bei keičiant mokomų sluoksnių skaičių.
+    \item Egzistuojantys NASNetLarge ir NASNetMobile modeliai buvo modifikuoti binariniai klasifikacijai ir suderinti naudojant du skirtingus duomenų rinkinius - kačių ir šunų bei virtuvės ir svetainės.
     \item Gauti skirtingų gylių suderintų modelių mokymo ir validacijos tikslumo grafikai bei klaidų matricos.
 \end{enumerate}
 
 \sectionnonum{Išvados}
-Atlikus litertūros šaltinių analizę ir eksperimentą buvo padarytos išvados:
+Atlikus literatūros šaltinių analizę ir eksperimentą buvo padarytos išvados:
 \begin{enumerate}
-  \item Suderinus skirtingų gylių modelius su dviem skirtingais mažais duomenų rinkiniais ir keičiant mokomų sluoksnių skaičių, buvo nustatyta, kad gilesnis tinklas pasiekė daug aukštesnius rezultatus (tikslumą, atšaukimą, preciziją) negu negilus modelis. Gilaus modelio validacijos tikslumo vidurkis buvo 0.91, atšaukimo vidurkis buvo 0.95 ir precizijos buvo 0.89, kai su tokiais pačiais hiperparametrais ir duomenų rinkiniais negilaus modelio validacijos tikslumo vidurkis buvo 0.58, atšaukimo vidurkis buvo 0.77 bei precizijos vidurkis buvo 0.55. Taigi, šio eksperimento metu gilesnis tinklas pasiekė 58\% didesnį tikslumą, 22\% didesnį atšaukimą ir 60\% didesnią preziją palyginus su negilaus modelio rezultatais.
+  \item Suderinus skirtingų gylių modelius su dviem skirtingais mažais duomenų rinkiniais ir keičiant mokomų sluoksnių skaičių, buvo nustatyta, kad gilesnis tinklas pasiekė daug aukštesnius rezultatus (tikslumą, atšaukimą, preciziją) negu negilus modelis. Gilaus modelio validacijos tikslumo vidurkis buvo 0.91, atšaukimo vidurkis buvo 0.95 ir precizijos buvo 0.89, kai su tokiais pačiais hiperparametrais ir duomenų rinkiniais negilaus modelio validacijos tikslumo vidurkis buvo 0.58, atšaukimo vidurkis buvo 0.77 bei precizijos vidurkis buvo 0.55. Taigi, šio eksperimento metu gilesnis tinklas pasiekė 58\% didesnį tikslumą, 22\% didesnį atšaukimą ir 60\% didesnią preciziją palyginus su negilaus modelio rezultatais.
   \item Modelis, kuris buvo pirmiausia apmokytas su duomenų rinkiniu, kuriame egzistuoja klasės sutampančios su derinimui naudojamu duomenų rinkinio klasėmis, po suderinimo gaus šiek tiek geresnius rezultatus negu kad toks pat modelis, kuris buvo suderintas su duomenų rinkiniu, kurio klasės nesutampa. Tai buvo nustatyta, kadangi naudojami modeliai buvo apmokyti su ImageNet duomenų baze, kurioje egzistuoja kačių ir šunų klasės, o derinant šiuos modelius su kačių ir šunų duomenų rinkiniais buvo gautas validacijos tikslumo vidurkis 0.77, atšaukimo vidurkis buvo 0.87 bei precizijos vidurkis buvo 0.73, o modelių suderintų su virtuvės ir svetainės duomenų rinkiniu validacijos tikslumo vidurkis buvo 0.73, atšaukimo vidurkis buvo 0.85, o precizijos vidurkis buvo 0.71. Taigi, suderintas modelis su duomenų rinkiniu, kurio klasės yra žinomos modeliui, pasiekia 5\% didesnį tikslumą, 1\% didesnį atšaukimą ir 2\% didesnią preciziją negu suderintas modelis su duomenų rinkiniu, kurio klasės yra naujos modeliui.
   \item Mokomų sluoksnių skaičius buvo keičiamas derinant skirtingų gylių modelius su dviem skirtingais mažais duomenų rinkiniais. Buvo pasirinkti sluoksnių skaičiai - 5, 10 ir 20. Palyginus visus bandymus geriausi rezultatai buvo pasiekti mokomų sluoksnių skaičių nustačius 20, tačiau derinant gilesnį modelį su virtuvės ir svetainės duomenų rinkiniu geriausias rezultatas buvo pasiektas su 10 mokomų sluoksnių. Su 5-iais mokomais sluoksniais modelis turėjo 0.72 tikslumo vidurkį, 0.88 atšaukimo vidurkį ir 0.71 precizijos vidurkį, su 10-imt mokomų sluoksnių modelio tikslumo vidurkis buvo 0.73, atšaukimo vidurkis buvo 0.75 bei precizijos vidurkis buvo 0.71. Tačiau su 20-imt mokomų sluoksnių modelis turėjo 0.79 tikslumo vidurkį, 0.95 atšaukimo vidurkį ir 0.75 precizijos vidurkį. Taigi, nustačius mokomų sluoksnių skaičių kaip 20 buvo pasiekti geresni rezultatai.
 \end{enumerate}
@@ -653,7 +653,7 @@ Atlikus litertūros šaltinių analizę ir eksperimentą buvo padarytos išvados
 
 \appendix
 \section{Tinklelio paieška}
-Hiperparametrų stulpelyje yra pateiktos išmetimo sluoksnio, optimizacijos funkcijos, mokymosi greičio reikšmės. Jų tyrinėjimas buvo atliktas su NASNetLarge ir NASNetMobile modeliais naudojant gyvūnų (kačių ir šunų) ir kambarių (virtuvės ir gyvenamojo kambario) duomenų rinkinius bei keičiant mokomų sluoksnių skaičių (5, 10 ir 20). Kiekviename rezultatų langelyje pateiktos tikslumo, atšaukimo ir precizijos reikšmės. Paryškintos reikšmės parodo geriausius rezultatus tame stulpelyje. 
+Hiperparametrų stulpelyje yra pateiktos išmetimo sluoksnio, optimizacijos funkcijos, mokymosi greičio reikšmės. Jų tyrinėjimas buvo atliktas su NASNetLarge ir NASNetMobile modeliais naudojant gyvūnų (kačių ir šunų) ir kambarių (virtuvės ir svetainės) duomenų rinkinius bei keičiant mokomų sluoksnių skaičių (5, 10 ir 20). Kiekviename rezultatų langelyje pateiktos tikslumo, atšaukimo ir precizijos reikšmės. Paryškintos reikšmės parodo geriausius rezultatus tame stulpelyje. 
 \setlength\LTleft{-0.8in}
 \setlength\LTright{-1in}
 \begin{longtable}{ | p{1.5cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | }
@@ -692,7 +692,7 @@ Hiperparametrų stulpelyje yra pateiktos išmetimo sluoksnio, optimizacijos funk
     0.7, Adagrad, 0.001   & 0.93; 0.86; 1.0 & 0.95; 0.9; 1.0 & 0.96; 0.92; 1.0    &  0.9; 0.86; 0.93 & 0.86; 0.76; 0.95 & 0.87; 0.78; 0.95   &  0.69; 0.38; 1.0 & 0.65; 0.3; 1.0 & 0.64; 0.28; 1.0              &  0.5; 0.0; 0.0 & 0.51; 0.02; 1.0 & 0.5; 0.0; 0.0  \\ \hline
 \end{longtable}
 
-\section{Modelio derinimo grafai}
+\section{Modelio derinimo grafikai}
 Kiekvienas paveiksliukas parodo modelio derinimo tikslumą arba nuostolį. Derinti buvo negilus ir gilus modeliai - NASNetMobile ir NASNetLarge, su gyvūnų ir kambarių duomenų rinkiniais keičiant mokomų sluoksnių skaičių - 5, 10 ir 20.
 % -------------------------------------------------------------------------------------------
 % -------------------------------------------------------------------------------------------
